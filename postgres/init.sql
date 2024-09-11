@@ -1,0 +1,10 @@
+CREATE TABLE users (
+	id serial PRIMARY KEY,
+	username VARCHAR ( 100 ) UNIQUE NOT NULL,
+	password VARCHAR ( 500 ) NOT NULL,
+	email VARCHAR (500) UNIQUE NOT NULL,
+	created TIMESTAMP NOT NULL
+);
+
+INSERT INTO users(username, password, email, created)
+VALUES ('KennethMan', 'pass', 'Kenneth.waikin.man@outlook.com', CURRENT_TIMESTAMP);
