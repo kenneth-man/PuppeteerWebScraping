@@ -1,0 +1,12 @@
+{
+	"name": "scrapesky",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"author": "Kenneth",
+	"license": "ISC",
+	"dependencies": {
+		"puppeteer": "^23.3.0"
+	}
+}

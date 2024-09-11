@@ -68,3 +68,15 @@ npm i
 - ### `Host name/address` = `localhost`
 - ### `Username` = (The `POSTGRES_USER=...` that was given with the `docker run` command previously)
 - ### `Password` = (The `POSTGRES_PASSWORD=...` that was given with the `docker run` command previously)
+
+<br>
+
+## Dependencies
+- ### node = v22.7.0
+- ### config = ^3.3.12
+- ### cors = ^2.8.5
+- ### express = ^4.20.0
+- ### express-rate-limit = ^7.4.0
+- ### helmet = ^7.1.0
+- ### pg = ^8.12.0
+- ### zod = ^3.23.8
