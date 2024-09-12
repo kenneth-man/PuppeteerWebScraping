@@ -16,7 +16,9 @@ cd scripts
 ```
 
 ### 3.
-- ### Execute `npx tsx` with the script file, for example...
+- ### Execute `npx tsx` with the script file
+	- ### E.g.
+		- ### Scripts require the Url of a bookmaker site page, which is passed as a command argument
 ```
-npx tsx scrapeSkyBet.ts
+npx tsx scrapeSkyBet.ts https://m.skybet.com/horse-racing
 ```

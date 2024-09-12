@@ -1,3 +1,7 @@
+import callUrlMapValue from './callUrlMapValue';
 import init from "./init";
 
-export { init }
+export {
+	callUrlMapValue,
+	init
+}

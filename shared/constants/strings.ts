@@ -1,0 +1,1 @@
+export const skyBetNextRacesHorse = "https://m.skybet.com/horse-racing"

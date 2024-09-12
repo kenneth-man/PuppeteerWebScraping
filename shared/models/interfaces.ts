@@ -10,4 +10,5 @@ export interface IInitConfig {
 export interface IInitPage {
 	page: Page;
 	browser: Browser;
+	url: string
 }

@@ -1,29 +1,28 @@
 import puppeteer from "puppeteer";
-import { z } from "zod"
 import { defaultHeight, defaultWidth } from "../constants/numbers";
-import { TBookMaker } from "../models/types"
+import { TBookMaker, TBookMakerUrls } from "../models/types"
 import { IInitConfig, IInitPage } from "../models/interfaces";
 
 const init = async (
 	bookmaker: TBookMaker,
+	bookmakerUrls: TBookMakerUrls,
 	config?: IInitConfig
 ): Promise<IInitPage> => {
 	if (process.argv.length !== 3) {
-		throw new Error("Please provide an event URL")
+		throw new Error("Please provide an event Url")
 	}
 
 	const url = process.argv[process.argv.length - 1]
-	const isValidUrl = z.string().url().safeParse(url)
 
-	if (!isValidUrl.success) {
+	if (!bookmakerUrls.get(url)) {
 		throw new Error(
-			"Please provide a valid URL of a horse racing event page on " +
+			"This script doesn't support the Url that was provided for... " +
 			bookmaker
 		)
 	}
 
 	const browser = await puppeteer.launch({
-		headless: config?.headless || false,
+		headless: config?.headless || true,
 		browser: config?.browser || "chrome"
 	})
 
@@ -36,7 +35,7 @@ const init = async (
 		height: config?.height || defaultHeight
 	})
 
-	return { page, browser }
+	return { page, browser, url }
 }
 
 export default init
