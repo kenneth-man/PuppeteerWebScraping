@@ -28,7 +28,7 @@
 
 <br>
 
-## Start the postgres server
+## Start the postgres server - Run a docker container
 ### 1. Install and Open `Docker Desktop` https://docs.docker.com/engine/install/ or make sure the docker engine is running on your machine
 
 ### 2.
