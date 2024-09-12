@@ -7,7 +7,7 @@ const getNextRacesHorseOdds = async (page: Page) => {
 
 	const oddsContainer = await page.$(oddsContainerSelector)
 
-	console.log(!!oddsContainer)
+	console.log("Found container element:", !!oddsContainer)
 	
 	const test = await page.evaluate((container) => {
 		if (container?.children) {
@@ -15,7 +15,10 @@ const getNextRacesHorseOdds = async (page: Page) => {
 		}
 	}, oddsContainer)
 
+	console.log("Scrape success:", !!test)
 	console.log(test)
+
+	// return in JSON format
 }
 
 export default getNextRacesHorseOdds

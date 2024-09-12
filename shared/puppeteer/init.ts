@@ -22,7 +22,7 @@ const init = async (
 	}
 
 	const browser = await puppeteer.launch({
-		headless: config?.headless || true,
+		headless: config?.headless ?? true,
 		browser: config?.browser || "chrome"
 	})
 
