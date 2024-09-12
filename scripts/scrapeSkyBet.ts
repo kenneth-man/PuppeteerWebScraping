@@ -1,6 +1,9 @@
 import puppeteer from 'puppeteer';
+import { init } from '@kenneth/shared/puppeteer/init';
 
 (async () => {
+	init()
+
 	// Launch the browser and open a new blank page
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();

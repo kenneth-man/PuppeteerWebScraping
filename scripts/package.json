@@ -1,0 +1,11 @@
+{
+	"name": "@kenneth/scripts",
+	"version": "1.0.0",
+	"description": "Scripts to be ran in the command line",
+	"main": "",
+	"author": "Kenneth",
+	"license": "ISC",
+	"dependencies": {
+		"@kenneth/shared": "*"
+	}
+}

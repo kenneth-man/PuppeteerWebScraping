@@ -1,0 +1,11 @@
+{
+	"name": "@kenneth/src",
+	"version": "1.0.0",
+	"description": "API source code",
+	"main": "",
+	"author": "Kenneth",
+	"license": "ISC",
+	"dependencies": {
+		"@kenneth/shared": "*"
+	}
+}

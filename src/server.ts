@@ -1,6 +1,7 @@
 import config from 'config'
 import pg from 'pg'
 import app from './app'
+import { init } from "@kenneth/shared"
 
 export const client = new pg.Client({
 	host: "localhost",
@@ -9,6 +10,8 @@ export const client = new pg.Client({
 	user: "Kenneth",
 	password: config.get('SECRETS.password')
 })
+
+init();
 
 client.connect();
 

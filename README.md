@@ -1,8 +1,19 @@
-# Puppeteer Web Scraping - Setup Steps
-## Add the `node-config` directory for environment variables
-### 1. Create a directory within the project root directory called `config`
+# Puppeteer Web Scraping
+### Utilises the puppeteer library https://pptr.dev/ to scrape betting odds from popular bookmakers
 
-### 2. Create a file inside `config` called `default.json` and paste the following inside
+- ### To run scripts in the command line, refer to the `README.md` located in `rootDir/scripts`
+
+- ### The API endpoints for Authentication, Authorization, Scraping, etc... are located in `rootDir/src/app.ts`
+
+- ### I'm using `NPM Workspaces` to re-use common functionality between the scripts and the API, by importing from `rootDir/shared/*`
+
+<br>
+
+# Setup
+## Add a `config` directory for environment variables (Secrets)
+### 1. In the project root directory, create a directory called `config`
+
+### 2. Inside `config`, create a file called `default.json` and paste the following json inside it
 ```
 {
 	"SECRETS": {
@@ -10,9 +21,10 @@
 	}
 }
 ```
-- ### The password env variable is accessed via `config.get('SECRETS.password')`
+- ### E.g.
+	- ### The `password` env variable above, is accessed via `config.get('SECRETS.password')`
 
-- ### If all else fails, just replace `config.get('SECRETS.password')` with `abc123`
+	- ### If all else fails, just replace anywhere that uses `config.get('SECRETS.password')`, with `abc123`
 
 <br>
 
@@ -20,18 +32,19 @@
 ### 1. Install and Open `Docker Desktop` https://docs.docker.com/engine/install/ or make sure the docker engine is running on your machine
 
 ### 2.
+- ### Make sure you're in the `postgres` directory
 ```
  cd postgres
 ```
 
 ### 3.
-- ### `postgresdb` is an arbitrary image name
+- ### In our example, we will use `postgresdb` as the image name
 ```
 docker build -t postgresdb .
 ```
 
 ### 4.
-- ### `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` correspond to those defined in `rootDir/src/server.ts` lines `10-12`
+- ### `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` correspond to the values defined in `rootDir/src/server.ts` lines `10-12`
 ```
 docker run --name postgresdb-container -p 5432:5432 -e POSTGRES_DB=PuppeteerWebScrapingDB -e POSTGRES_USER=Kenneth -e POSTGRES_PASSWORD=abc123 -d postgresdb
 ```
@@ -71,7 +84,7 @@ npm i
 
 <br>
 
-## Dependencies
+## Main Dependencies
 - ### node = v22.7.0
 - ### config = ^3.3.12
 - ### cors = ^2.8.5
@@ -79,4 +92,5 @@ npm i
 - ### express-rate-limit = ^7.4.0
 - ### helmet = ^7.1.0
 - ### pg = ^8.12.0
+- ### puppeteer: ^23.3.0
 - ### zod = ^3.23.8

@@ -1,0 +1,8 @@
+{
+	"name": "@kenneth/shared",
+	"version": "1.0.0",
+	"description": "To be used in other workspaces via import",
+	"main": "index.ts",
+	"author": "Kenneth",
+	"license": "ISC"
+}
