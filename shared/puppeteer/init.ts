@@ -9,7 +9,7 @@ const init = async (
 	config?: IInitConfig
 ): Promise<IInitPage> => {
 	if (process.argv.length !== 3) {
-		throw new Error("Please provide an event Url")
+		throw new Error("Please provide a single Url argument")
 	}
 
 	const url = process.argv[process.argv.length - 1]
