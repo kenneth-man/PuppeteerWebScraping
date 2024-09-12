@@ -1,1 +1,3 @@
-export * from "./init"
+import init from "./init";
+
+export { init }

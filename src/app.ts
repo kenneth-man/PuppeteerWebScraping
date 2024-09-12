@@ -1,7 +1,7 @@
-import express from 'express'
-import rateLimit from 'express-rate-limit'
-import helmet from 'helmet'
-import cors from 'cors'
+import express from "express"
+import rateLimit from "express-rate-limit"
+import helmet from "helmet"
+import cors from "cors"
 
 const app = express()
 
@@ -13,11 +13,11 @@ app.use(helmet())
 
 // limit requests from the same IP address
 app.use(
-	'/api',
+	"/api",
 	rateLimit({
 		limit: 10000, // 10,000 requests
 		windowMs: 60000, // 1 minute
-		message: 'Too many requests from this IP, please try again later'
+		message: "Too many requests from this IP, please try again later"
 	})
 )
 

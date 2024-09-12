@@ -14,6 +14,7 @@
 ### 1. In the project root directory, create a directory called `config`
 
 ### 2. Inside `config`, create a file called `default.json` and paste the following json inside it
+- ### We'll just use the password `abc123` in our example
 ```
 {
 	"SECRETS": {
