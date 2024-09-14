@@ -1,10 +1,18 @@
-import { Page } from "puppeteer"
+import { Page, TimeoutError } from "puppeteer"
 import { ISkyBet, ISkyBetHorseInfo } from "../../models/interfaces";
 
 const getNextRacesHorseOdds = async (page: Page) => {
 	const raceCardContainerSelector = '[data-testid="market-racecard"]'
 
-	await page.waitForSelector(raceCardContainerSelector, { visible: true });
+	try {
+		// timeout default is 30 seconds
+		await page.waitForSelector(raceCardContainerSelector, { visible: true });
+	} catch (e) {
+		if (e instanceof TimeoutError) {
+			throw new Error("Could not find the page selector and timed out")
+		}
+		throw new Error()
+	}
 
 	const raceCardContainer = await page.$(raceCardContainerSelector)
 	

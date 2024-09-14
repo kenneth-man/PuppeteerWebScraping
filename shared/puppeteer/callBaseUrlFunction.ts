@@ -14,10 +14,10 @@ const callBaseUrlFunction = async (
 			return await func(page)
 		}
 	} catch(e) {
-		throw new Error(
-			"Error occured whilst calling the associated function... " +
-			String(e)
-		)
+		if (e.message) {
+			throw new Error(e.message)
+		}
+		throw new Error()
 	}
 }
 
