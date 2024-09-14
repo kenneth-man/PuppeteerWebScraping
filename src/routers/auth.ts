@@ -1,5 +1,5 @@
 import express from "express"
-import { signIn, signUp } from '../handlers/auth'
+import { signIn, signUp } from "../handlers/auth"
 
 const router = express.Router()
 

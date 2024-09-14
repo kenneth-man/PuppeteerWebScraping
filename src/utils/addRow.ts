@@ -1,5 +1,5 @@
-import { Client } from 'pg'
-import { TTables } from '../models/types'
+import { Client } from "pg"
+import { TTables } from "../models/types"
 
 const addRow = async (
 	client: Client,

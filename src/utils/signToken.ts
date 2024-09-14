@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import config from "config"
-import { TPreAccountUser } from '../models/types';
+import { TPreAccountUser } from "../models/types";
 
 const signToken = (payload: TPreAccountUser) => {
 	return jwt.sign(

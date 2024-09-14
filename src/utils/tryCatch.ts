@@ -5,9 +5,7 @@ const tryCatch = async (callback: Function, res: Response) => {
 		await callback()
 	} catch(e) {
 		if (e.message) {
-			res
-				.status(400)
-				.json({ error: e.message })
+			res.json({ error: e.message })
 			return
 		}
 

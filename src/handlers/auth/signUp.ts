@@ -1,10 +1,9 @@
 import { Response } from "express"
 import { z } from "zod"
-import { IRequestBody } from '../../models/interfaces'
-import { TPreAccountUser, TSignUp, TUser } from '../../models/types'
-import { client } from '../../server'
-import { addRow, hashPassword, signToken, tryCatch } from '../../utils'
-import { OUser } from '../../models/objects'
+import { IRequestBody } from "../../models/interfaces"
+import { TPreAccountUser, TSignUp, TUser } from "../../models/types"
+import { client } from "../../server"
+import { addRow, getUserByEmail, hashPassword, signToken, throwError, tryCatch } from "../../utils"
 
 const signUp = async (
 	req: IRequestBody<TSignUp>,
@@ -13,29 +12,35 @@ const signUp = async (
 	await tryCatch(
 		async () => {
 			if (!req.body?.email || !req.body?.password || !req.body?.username) {
-				throw new Error("Request must contain a body with the following fields: " + 
-					"email, password, username")
+				throwError(res, 400,
+					"Request must contain a body with the following fields: " + 
+					"email, password, username"
+				)
 			}
 		
 			const { email, password, username } = req.body
 			const passwordLength = 8
 		
 			if (password.length < passwordLength) {
-				throw new Error(`Passwords must be at least ${passwordLength} characters or greater`)
+				throwError(res, 400,
+					`Passwords must be at least ${passwordLength} characters or greater`
+				)
 			}
 		
 			const emailValidation = z.string().email().safeParse(email)
 		
 			if (!emailValidation.success) {
-				throw new Error("Please provide a valid email address")
+				throwError(res, 400, "Please provide a valid email address")
 			}
 		
 			const existingEmail = await client
 				.query(`SELECT * FROM users WHERE email = $1`, [email])
 
 			if (existingEmail.rowCount > 0) {
-				throw new Error("A user with this email already exists. " + 
-					"Please sign up with a different email address")
+				throwError(res, 400,
+					"A user with this email already exists. " + 
+					"Please sign up with a different email address"
+				)
 			}
 
 			let newUser: TPreAccountUser = {
@@ -48,18 +53,7 @@ const signUp = async (
 
 			await addRow(client, newUser, "users")
 
-			const userRows = await client
-				.query(`SELECT * FROM users WHERE email = $1`, [email])
-
-			if (userRows.rowCount === 0) {
-				throw new Error("New user was not created in the database")
-			}
-
-			if (!OUser.safeParse(userRows.rows[0]).success) {
-				throw new Error("Data returned from db does not match 'User' schema")
-			}
-
-			const user: TUser = userRows.rows[0]
+			const user: TUser = await getUserByEmail(res, email)
 
 			delete user.password
 
@@ -69,7 +63,8 @@ const signUp = async (
 				.status(200)
 				.cookie("token", token)
 				.json({...user, "token": token});
-		}, res
+		},
+		res
 	)
 }
 

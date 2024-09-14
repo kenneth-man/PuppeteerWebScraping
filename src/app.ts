@@ -1,7 +1,7 @@
 import express from "express"
 import helmet from "helmet"
 import cors from "cors"
-import { authRouter, oddsRouter } from './routers'
+import { authRouter, oddsRouter } from "./routers"
 
 const app = express()
 

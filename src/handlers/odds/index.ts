@@ -1,4 +1,4 @@
-import getOdds from './getOdds';
+import getOdds from "./getOdds";
 
 export {
 	getOdds
