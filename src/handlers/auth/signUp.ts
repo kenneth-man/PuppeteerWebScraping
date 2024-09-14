@@ -4,6 +4,7 @@ import { IRequestBody } from '../../models/interfaces'
 import { TPreAccountUser, TSignUp, TUser } from '../../models/types'
 import { client } from '../../server'
 import { addRow, hashPassword, signToken, tryCatch } from '../../utils'
+import { OUser } from '../../models/objects'
 
 const signUp = async (
 	req: IRequestBody<TSignUp>,
@@ -54,9 +55,10 @@ const signUp = async (
 				throw new Error("New user was not created in the database")
 			}
 
-			console.log("userRows", userRows)
-			console.log("userRows length", userRows.rows.length)
-			console.log("userRows index 0", userRows.rows[0])
+			if (!OUser.safeParse(userRows.rows[0]).success) {
+				throw new Error("Data returned from db does not match 'User' schema")
+			}
+
 			const user: TUser = userRows.rows[0]
 
 			delete user.password
