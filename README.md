@@ -90,7 +90,6 @@ npm i
 - ### config = ^3.3.12
 - ### cors = ^2.8.5
 - ### express = ^4.20.0
-- ### express-rate-limit = ^7.4.0
 - ### helmet = ^7.1.0
 - ### pg = ^8.12.0
 - ### puppeteer: ^23.3.0
