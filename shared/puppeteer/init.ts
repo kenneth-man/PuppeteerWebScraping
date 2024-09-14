@@ -8,17 +8,25 @@ import { getBaseUrlFunction } from ".";
 const init = async (
 	bookmaker: TBookMaker,
 	bookmakerBaseUrls: TBookMakerBaseUrls,
+	apiUrl?: string,
 	config?: IInitConfig
 ): Promise<IInitPage> => {
-	if (process.argv.length !== 3) {
-		throw new Error("Please provide a single Url argument")
-	}
+	// 'eventUrl' argument
+	let url: string
 
-	const url = process.argv[process.argv.length - 1]
+	if (apiUrl) {
+		url = apiUrl
+	} else {
+		if (process.argv.length !== 3) {
+			throw new Error("Please provide a single Url argument")
+		}
+
+		url = process.argv[process.argv.length - 1]
+	}
 
 	if (!(getBaseUrlFunction(bookmakerBaseUrls, url))) {
 		throw new Error(
-			"This script doesn't support the Url that was provided for... " +
+			"This Url is not supported for... " +
 			bookmaker
 		)
 	}

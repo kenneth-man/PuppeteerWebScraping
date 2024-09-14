@@ -1,11 +1,11 @@
 import config from "config"
 import pg from "pg"
 import app from "./app"
-import { apiPort } from "./constants/numbers"
+import { apiPort, postgresPort } from "./constants/numbers"
 
 export const client = new pg.Client({
 	host: "localhost",
-	port: 5432,
+	port: postgresPort,
 	database: "PuppeteerWebScrapingDB",
 	user: "Kenneth",
 	password: config.get("SECRETS.password")

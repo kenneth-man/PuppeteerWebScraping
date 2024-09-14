@@ -2,6 +2,8 @@ import express from "express"
 import rateLimit from "express-rate-limit"
 import helmet from "helmet"
 import cors from "cors"
+import { requestsLimit, requestsLimitTimeout } from './constants/numbers'
+import { oddsRouter } from './routers'
 
 const app = express()
 
@@ -15,10 +17,17 @@ app.use(helmet())
 app.use(
 	"/api",
 	rateLimit({
-		limit: 10000, // 10,000 requests
-		windowMs: 60000, // 1 minute
+		limit: requestsLimit,
+		windowMs: requestsLimitTimeout,
 		message: "Too many requests from this IP, please try again later"
 	})
 )
+
+// convert request body to JSON
+app.use(express.json())
+
+app.use("/signup", () => {})
+app.use("/signin", () => {})
+app.use("/odds", oddsRouter)
 
 export default app

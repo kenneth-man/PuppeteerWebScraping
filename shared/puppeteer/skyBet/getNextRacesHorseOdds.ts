@@ -67,7 +67,7 @@ const getNextRacesHorseOdds = async (page: Page) => {
 								break;
 							}
 							case statsIndex: {
-								const statsContainer = element.firstChild?.firstChild
+								const statsContainer = element.firstChild?.lastChild
 
 								if (!statsContainer || !(statsContainer instanceof Element)) {
 									break;
