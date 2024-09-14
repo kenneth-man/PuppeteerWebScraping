@@ -14,18 +14,21 @@
 ### 1. In the project root directory, create a directory called `config`
 
 ### 2. Inside `config`, create a file called `default.json` and paste the following json inside it
-- ### We'll just use the password `abc123` in our example
 ```
 {
 	"SECRETS": {
-		"password": "abc123"
+		"postgres_password": "abc123",
+		"jwt_key": "lorem ipsum",
+		"jwt_expiration": "5h"
 	}
 }
 ```
 - ### E.g.
-	- ### The `password` env variable above, is accessed via `config.get('SECRETS.password')`
+	- ### We're using the password `abc123` for the postgres server password
 
-	- ### If all else fails, just replace anywhere that uses `config.get('SECRETS.password')`, with `abc123`
+	- ### The `postgres_password` env variable above, is accessed via `config.get('SECRETS.postgres_password')`
+
+	- ### If all else fails, just replace anywhere that uses `config.get('SECRETS.postgres_password')`, with `abc123`
 
 <br>
 
@@ -45,12 +48,14 @@ docker build -t postgresdb .
 ```
 
 ### 4.
-- ### `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` correspond to the values defined in `rootDir/src/server.ts` lines `10-12`
+- ### After executing the command below, the container should be running
 ```
 docker run --name postgresdb-container -p 5432:5432 -e POSTGRES_DB=PuppeteerWebScrapingDB -e POSTGRES_USER=Kenneth -e POSTGRES_PASSWORD=abc123 -d postgresdb
 ```
 
-- ### If you have already ran the container before, open `Docker Desktop` and click the `Play` button or...
+- ### `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` correspond to the values defined in `rootDir/src/server.ts` lines `9-11`
+
+- ### Note: If you have already built and ran the container before, open `Docker Desktop` and click the `Play` button or...
 ```
 docker start [CONTAINER_ID]
 ```
@@ -87,10 +92,12 @@ npm i
 
 ## Main Dependencies
 - ### node = v22.7.0
+- ### bcryptjs: ^2.4.3
 - ### config = ^3.3.12
 - ### cors = ^2.8.5
 - ### express = ^4.20.0
 - ### helmet = ^7.1.0
+- ### jsonwebtoken: ^9.0.2
 - ### pg = ^8.12.0
 - ### puppeteer: ^23.3.0
 - ### zod = ^3.23.8

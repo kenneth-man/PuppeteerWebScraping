@@ -8,7 +8,7 @@ export const client = new pg.Client({
 	port: postgresPort,
 	database: "PuppeteerWebScrapingDB",
 	user: "Kenneth",
-	password: config.get("SECRETS.password")
+	password: config.get("SECRETS.postgres_password")
 })
 
 client.connect();
@@ -16,7 +16,7 @@ client.connect();
 app.listen(
 	apiPort,
 	async () => {
-		console.log("App is running...")
+		console.log("API is running...")
 		console.log(`> Port: ${apiPort}`)
 		try {
 			await client.query("SELECT * FROM users WHERE id = 1")

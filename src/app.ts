@@ -1,7 +1,7 @@
 import express from "express"
 import helmet from "helmet"
 import cors from "cors"
-import { oddsRouter } from './routers'
+import { authRouter, oddsRouter } from './routers'
 
 const app = express()
 
@@ -14,8 +14,7 @@ app.use(helmet())
 // convert request body to JSON
 app.use(express.json())
 
-app.use("/signup", () => {})
-app.use("/signin", () => {})
+app.use("/auth", authRouter)
 app.use("/odds", oddsRouter)
 
 export default app

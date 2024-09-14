@@ -2,12 +2,12 @@ import { Response } from "express"
 import { skyBetUrls } from "@kenneth/shared/constants/maps";
 import { ISkyBet } from "@kenneth/shared/models/interfaces";
 import { callBaseUrlFunction, init } from "@kenneth/shared/puppeteer"
-import { TgetOdds } from "../../models/types";
+import { TGetOdds } from "../../models/types";
 import { IRequestBody } from "../../models/interfaces";
 import { tryCatch } from "../../utils";
 
 const getOdds = async (
-	req: IRequestBody<TgetOdds>,
+	req: IRequestBody<TGetOdds>,
 	res: Response
 ) => {
 	await tryCatch(async () => {
@@ -23,7 +23,7 @@ const getOdds = async (
 	
 		await browser.close();
 	
-		return res
+		res
 			.status(200)
 			.json(data)
 	}, res)

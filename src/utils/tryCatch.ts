@@ -5,12 +5,13 @@ const tryCatch = async (callback: Function, res: Response) => {
 		await callback()
 	} catch(e) {
 		if (e.message) {
-			return res
+			res
 				.status(400)
 				.json({ error: e.message })
+			return
 		}
 
-		return res
+		res
 			.status(500)
 			.json({ error: "Unknown error occured" })
 	}

@@ -31,7 +31,7 @@ const getNextRacesHorseOdds = async (page: Page) => {
 
 			Array.from(container.children).forEach((element, index) => {
 				// first child of a race card container, is the title element
-				if (index !== 0 && element.children.length == 1) {
+				if (index !== 0 && element.children.length === 1) {
 					infoContainer.push(element.children[0])
 				}
 			})
