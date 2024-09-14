@@ -1,4 +1,4 @@
-# Scripts to scrape odds for an event from the following
+# Scripts to scrape odds for an event from the following bookermaker sites
 - ### https://m.skybet.com/
 
 ## Run a script

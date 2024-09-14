@@ -10,7 +10,7 @@ const callUrlMapValue = async (
 	
 	try {
 		if (func) {
-			await func(page)
+			return await func(page)
 		}
 	} catch(e) {
 		throw new Error(
