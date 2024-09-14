@@ -1,7 +1,9 @@
-import callUrlMapValue from './callUrlMapValue';
+import callBaseUrlFunction from "./callBaseUrlFunction";
+import getBaseUrlFunction from "./getBaseUrlFunction";
 import init from "./init";
 
 export {
-	callUrlMapValue,
+	callBaseUrlFunction,
+	getBaseUrlFunction,
 	init
 }

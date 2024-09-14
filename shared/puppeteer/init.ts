@@ -1,12 +1,13 @@
 import puppeteer from "puppeteer";
 import { defaultHeight, defaultWidth } from "../constants/numbers";
-import { TBookMaker, TBookMakerUrls } from "../models/types"
+import { TBookMaker, TBookMakerBaseUrls } from "../models/types"
 import { IInitConfig, IInitPage } from "../models/interfaces";
-import delay from '../utils/delay';
+import delay from "../utils/delay";
+import { getBaseUrlFunction } from ".";
 
 const init = async (
 	bookmaker: TBookMaker,
-	bookmakerUrls: TBookMakerUrls,
+	bookmakerBaseUrls: TBookMakerBaseUrls,
 	config?: IInitConfig
 ): Promise<IInitPage> => {
 	if (process.argv.length !== 3) {
@@ -15,7 +16,7 @@ const init = async (
 
 	const url = process.argv[process.argv.length - 1]
 
-	if (!bookmakerUrls.get(url)) {
+	if (!(getBaseUrlFunction(bookmakerBaseUrls, url))) {
 		throw new Error(
 			"This script doesn't support the Url that was provided for... " +
 			bookmaker
@@ -32,8 +33,8 @@ const init = async (
 	await page.goto(url)
 
 	// make sure page fully loads; without this, sometimes data wouldn't be retrieved
-	await page.waitForNetworkIdle({ idleTime: 2000 })
-	await delay(2000)
+	await page.waitForNetworkIdle({ idleTime: 1000 })
+	await delay(1000)
 
 	await page.setViewport({
 		width: config?.width || defaultWidth,
