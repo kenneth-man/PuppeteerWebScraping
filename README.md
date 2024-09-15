@@ -14,6 +14,10 @@
 		- ### `email` = `kenneth.waikin.man@outlook.com`
 		- ### `password` = `password45678`
 
+- ### The Url that can be passed into a script or the api `/odds` endpoint is determined by a `map` data structure in `rootDir/shared/constants/maps.ts`
+	- ### The reason for this mapping is to cover the case in the future where a Url is dynamic (e.g. with unique id) and not a static Url like `https://m.skybet.com/horse-racing`
+	- ### Each page can have a different layout of elements that changes which parents and children elements need to be selected
+	- ### So, as long as a Url contains a common base Url, the same function will be called to scrape that page
 
 <br>
 
