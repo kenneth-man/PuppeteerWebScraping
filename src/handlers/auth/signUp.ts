@@ -57,7 +57,7 @@ const signUp = async (
 
 			delete user.password
 
-			const token = signToken(newUser)
+			const token = signToken(user)
 
 			res
 				.status(200)

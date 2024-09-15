@@ -17,7 +17,7 @@ const callBaseUrlFunction = async (
 		if (e.message) {
 			throw new Error(e.message)
 		}
-		throw new Error()
+		throw new Error("Unknown error occured")
 	}
 }
 

@@ -1,15 +1,27 @@
 # Puppeteer Web Scraping
-### Utilises the puppeteer library https://pptr.dev/ to scrape betting odds from popular bookmakers
+### Uses the puppeteer library https://pptr.dev/ to scrape betting odds from popular bookmaker sites
 
-- ### To run scripts in the command line, refer to the `README.md` located in `rootDir/scripts`
+- ### For more information on running the command line scripts, refer to the `README.md` located in `rootDir/scripts`
 
-- ### The API endpoints for Authentication, Authorization, Scraping, etc... are located in `rootDir/src/app.ts`
+- ### For more information on the API, refer to the `README.md` located in `rootDir/src`
 
-- ### I'm using `NPM Workspaces` to re-use common functionality between the scripts and the API, by importing from `rootDir/shared/*`
+- ### I'm using `NPM Workspaces` to re-use common functionality between `rootDir/scripts` and `rootDir/src`, by importing from `rootDir/shared/*`
+
+- ### `rootDir/postgres` contains a dockerfile that's used to get a postgres server running in 2 commands. Setup steps are under `Setup` of this file
+	- ### It uses the `init.sql` file to initialize a `users` table and add a row to it
 
 <br>
 
-# Setup
+# ▶️ Demos
+- ### API Demo:
+
+
+- ### Script Demo:
+
+
+<br>
+
+# ▶️ Setup
 ## Add a `config` directory for environment variables (Secrets)
 ### 1. In the project root directory, create a directory called `config`
 
@@ -26,50 +38,48 @@
 - ### E.g.
 	- ### We're using the password `abc123` for the postgres server password
 
-	- ### The `postgres_password` env variable above, is accessed via `config.get('SECRETS.postgres_password')`
+	- ### The `postgres_password` env variable above, is accessed in code via `config.get('SECRETS.postgres_password')`
 
 	- ### If all else fails, just replace anywhere that uses `config.get('SECRETS.postgres_password')`, with `abc123`
 
 <br>
 
-## Start the postgres server - Run a docker container
+## Start the postgres server by running a docker container
 ### 1. Install and Open `Docker Desktop` https://docs.docker.com/engine/install/ or make sure the docker engine is running on your machine
 
-### 2.
-- ### Make sure you're in the `postgres` directory
+### 2. Make sure you're in the `postgres` directory
 ```
  cd postgres
 ```
 
-### 3.
+### 3. Create the docker image
 - ### In our example, we will use `postgresdb` as the image name
 ```
 docker build -t postgresdb .
 ```
 
-### 4.
-- ### After executing the command below, the container should be running
+### 4. Run the docker container
+- ### After executing the command below, the container should now be running
 ```
 docker run --name postgresdb-container -p 5432:5432 -e POSTGRES_DB=PuppeteerWebScrapingDB -e POSTGRES_USER=Kenneth -e POSTGRES_PASSWORD=abc123 -d postgresdb
 ```
 
-- ### `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` correspond to the values defined in `rootDir/src/server.ts` lines `9-11`
+- ### The `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` values above, correspond to the values defined in `rootDir/src/server.ts` lines `9-11`
 
-- ### Note: If you have already built and ran the container before, open `Docker Desktop` and click the `Play` button or...
+- ### ***Note:*** If you have already ran the container before, open `Docker Desktop` and click the `Play` button on the container or...
 ```
 docker start [CONTAINER_ID]
 ```
 
 <br>
 
-## Start the API - Connects to the running postgres server
-### 1.
-- ### In the project root directory
+## Start the API and connect to the postgres server
+### 1. Make sure you're in the project root directory and install dependencies
 ```
 npm i
 ```
 
-### 2.
+### 2. Make sure the postgres server is running, then Start the API
 ```
  npm start
 ```
@@ -90,7 +100,7 @@ npm i
 
 <br>
 
-## Main Dependencies
+# ▶️ Main Dependencies
 - ### node = v22.7.0
 - ### bcryptjs: ^2.4.3
 - ### config = ^3.3.12

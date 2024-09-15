@@ -11,7 +11,7 @@ const getNextRacesHorseOdds = async (page: Page) => {
 		if (e instanceof TimeoutError) {
 			throw new Error("Could not find the page selector and timed out")
 		}
-		throw new Error()
+		throw new Error("Unknown error occured")
 	}
 
 	const raceCardContainer = await page.$(raceCardContainerSelector)
