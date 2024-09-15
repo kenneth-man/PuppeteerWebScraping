@@ -6,11 +6,13 @@
 			- ### `password`
 			- ### `email`
 		- ### Upon successful signup, adds the data row into the postgres database
+		- ### Signs a JWT to be used in the `/odds` endpoint
 
 	- ### `/auth/signIn`
 		- ### Requires a request body with the following fields
 			- ### `password`
 			- ### `email`
+		- ### Signs a JWT to be used in the `/odds` endpoint
 
 	- ### `/odds`
 		- ### Requires a request body with the following fields
