@@ -17,8 +17,9 @@ const signIn = async (
 			}
 		
 			const { email, password } = req.body
+			const emailLowerCase = email.toLowerCase()
 
-			const user: TUser = await getUserByEmail(res, email)
+			const user: TUser = await getUserByEmail(res, emailLowerCase)
 
 			if (!checkPassword(user.password, password)) {
 				throwError(res, 401, "Incorrect password")

@@ -26,4 +26,6 @@
 ![](../res/apiDemo1.png)
 
 - ### Calling the `/odds` endpoint using the JWT in the `Authorization` header so only authorized users can access the scraped data
+
+- ### If after 30 seconds, the selectors cannot be found and data cannot be scraped, an error is thrown
 ![](../res/apiDemo2.png)

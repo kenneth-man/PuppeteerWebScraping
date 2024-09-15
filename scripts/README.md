@@ -26,6 +26,8 @@ npx tsx scrapeSkyBet.ts https://m.skybet.com/horse-racing
 
 # ▶️ Demo
 - ### In the `rootDir/scripts` directory, and executing `npx tsx scrapeSkyBet.ts https://m.skybet.com/horse-racing`
+
+- ### If after 30 seconds, the selectors cannot be found and data cannot be scraped, an error is thrown
 ![](../res/scriptDemo2.png)
 
 ![](../res/scriptDemo1.png)

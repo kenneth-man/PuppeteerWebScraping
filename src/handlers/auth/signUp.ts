@@ -19,6 +19,7 @@ const signUp = async (
 			}
 		
 			const { email, password, username } = req.body
+			const emailLowerCase = email.toLowerCase()
 			const passwordLength = 8
 		
 			if (password.length < passwordLength) {
@@ -27,14 +28,14 @@ const signUp = async (
 				)
 			}
 		
-			const emailValidation = z.string().email().safeParse(email)
+			const emailValidation = z.string().email().safeParse(emailLowerCase)
 		
 			if (!emailValidation.success) {
 				throwError(res, 400, "Please provide a valid email address")
 			}
 		
 			const existingEmail = await client
-				.query(`SELECT * FROM users WHERE email = $1`, [email])
+				.query(`SELECT * FROM users WHERE email = $1`, [emailLowerCase])
 
 			if (existingEmail.rowCount > 0) {
 				throwError(res, 400,
@@ -45,7 +46,7 @@ const signUp = async (
 
 			let newUser: TPreAccountUser = {
 				username,
-				email
+				email: emailLowerCase
 			}
 
 			const passwordHash = hashPassword(password)
@@ -53,7 +54,7 @@ const signUp = async (
 
 			await addRow(client, newUser, "users")
 
-			const user: TUser = await getUserByEmail(res, email)
+			const user: TUser = await getUserByEmail(res, emailLowerCase)
 
 			delete user.password
 

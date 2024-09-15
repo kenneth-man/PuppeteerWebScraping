@@ -6,4 +6,4 @@ CREATE TABLE users (
 );
 
 INSERT INTO users(username, password, email)
-VALUES ('KennethMan', 'password45678', 'Kenneth.waikin.man@outlook.com');
+VALUES ('KennethMan', '$2a$10$wJ3Q3G2/xWMuiwXiGdRsKucsXRe9G1nd7Uwfewb.9hvsxvDJPIx.6', 'kenneth.waikin.man@outlook.com');

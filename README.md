@@ -10,7 +10,10 @@
 
 - ### `rootDir/postgres` contains a dockerfile that's used to get a postgres server running in 2 commands
 	- ### The steps to start the postgres server are described under `Setup` of this file
-	- ### It uses the `init.sql` file to initialize a `users` table and add a row to it
+	- ### It uses the `init.sql` file to initialize a `users` table and add a row of data with the following sign-in credentials that can be used in the `/auth/signIn` endpoint
+		- ### `email` = `kenneth.waikin.man@outlook.com`
+		- ### `password` = `password45678`
+
 
 <br>
 
