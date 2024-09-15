@@ -4,20 +4,13 @@
 - ### For more information on running the command line scripts, refer to the `README.md` located in `rootDir/scripts`
 
 - ### For more information on the API, refer to the `README.md` located in `rootDir/src`
+	- ### The steps to start the API are described under `Setup` of this file
 
 - ### I'm using `NPM Workspaces` to re-use common functionality between `rootDir/scripts` and `rootDir/src`, by importing from `rootDir/shared/*`
 
-- ### `rootDir/postgres` contains a dockerfile that's used to get a postgres server running in 2 commands. Setup steps are under `Setup` of this file
+- ### `rootDir/postgres` contains a dockerfile that's used to get a postgres server running in 2 commands
+	- ### The steps to start the postgres server are described under `Setup` of this file
 	- ### It uses the `init.sql` file to initialize a `users` table and add a row to it
-
-<br>
-
-# ▶️ Demos
-- ### API Demo:
-
-
-- ### Script Demo:
-
 
 <br>
 
@@ -79,7 +72,7 @@ docker start [CONTAINER_ID]
 npm i
 ```
 
-### 2. Make sure the postgres server is running, then Start the API
+### 2. Make sure the postgres server is running, then start the API
 ```
  npm start
 ```
