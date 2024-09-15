@@ -2,6 +2,7 @@ import express from "express"
 import helmet from "helmet"
 import cors from "cors"
 import { authRouter, oddsRouter } from "./routers"
+import { protect } from "./utils"
 
 const app = express()
 
@@ -15,6 +16,6 @@ app.use(helmet())
 app.use(express.json())
 
 app.use("/auth", authRouter)
-app.use("/odds", oddsRouter)
+app.use("/odds", protect, oddsRouter)
 
 export default app

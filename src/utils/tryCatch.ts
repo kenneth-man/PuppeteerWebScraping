@@ -1,6 +1,10 @@
 import { Response } from "express"
 
 const tryCatch = async (callback: Function, res: Response) => {
+	// default status; 'init' function is also used in scripts,
+	// so cannot pass in 'res' as an argument
+	res.status(500)
+
 	try {
 		await callback()
 	} catch(e) {

@@ -10,9 +10,6 @@ const getOdds = async (
 	req: IRequestBody<TGetOdds>,
 	res: Response
 ) => {
-	// default; 'init' is also used in scripts, so cannot pass in 'res'
-	res.status(400)
-
 	await tryCatch(
 		async () => {
 			const url = req.body?.eventUrl
