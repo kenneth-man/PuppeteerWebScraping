@@ -28,12 +28,19 @@
 	}
 }
 ```
-- ### E.g.
-	- ### We're using the password `abc123` for the postgres server password
+- ### The structure should look like...
+```
+<rootDir>
+ └── config
+      └── default.json
+```
+- ### How are `config` variables used?
+	- ### E.g.
+		- ### We're using the password `abc123` for the postgres server password
 
-	- ### The `postgres_password` env variable above, is accessed in code via `config.get('SECRETS.postgres_password')`
+		- ### The `postgres_password` env variable above, is accessed in code via `config.get('SECRETS.postgres_password')`
 
-	- ### If all else fails, just replace anywhere that uses `config.get('SECRETS.postgres_password')`, with `abc123`
+		- ### If all else fails, just replace anywhere that uses `config.get('SECRETS.postgres_password')`, with `abc123`
 
 <br>
 
