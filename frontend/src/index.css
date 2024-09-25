@@ -1,0 +1,167 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #fff;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 300;
+	transition: all 0.15s;
+	word-break: break-word;
+}
+
+#root,
+.app,
+html,
+body {
+	height: 100%;
+}
+
+.test {
+	background-color: red;
+	padding: 5rem;
+}
+
+.app {
+	display: flex;
+	position: relative;
+}
+
+:root {
+	--orange: #0064a5;
+	--darkBlue: #0064a5;
+	--baseBlue: #336791;
+	--lightBlue: #008bb9;
+	--darkGrey: #848484;
+	--baseGrey: #666666;
+	--lightGrey: #585858;
+	--darkOrange: #cc3b03;
+	--baseOrange: #d24b03;
+	--lightOrange: #f26522;
+}
+
+.row,
+.col,
+.ctr {
+	display: flex;
+	align-items: center;
+}
+
+.row,
+.col {
+	justify-content: space-evenly;
+}
+
+.col {
+	flex-direction: column;
+}
+
+.ctr {
+	justify-content: center !important;
+}
+
+.fw {
+	width: 100%;
+}
+
+.fh {
+	height: 100%;
+}
+
+.bold {
+	font-weight: 900;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.hidden {
+	opacity: 0%;
+	visibility: hidden;
+	z-index: -5;
+}
+
+div {
+	background-size: cover;
+}
+
+img {
+	object-fit: cover;
+}
+
+.link {
+	width: max-content;
+	font-size: 1.5rem;
+}
+
+/*equivalent to 'space-y-...' in tailwind */
+.space-y-80 > *:not(:last-child) {
+    margin-bottom: 20rem;
+}
+
+.space-y-40 > *:not(:last-child) {
+    margin-bottom: 10rem;
+}
+
+.space-y-20 > *:not(:last-child) {
+    margin-bottom: 5rem;
+}
+
+.space-y-10 > *:not(:last-child) {
+    margin-bottom: 2.5rem;
+}
+
+.space-y-8 > *:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.space-y-6 > *:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.space-y-4 > *:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.space-y-2 > *:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+/*'space-x-...' */
+.space-x-80 > *:not(:last-child) {
+    margin-left: 20rem;
+}
+
+.space-x-40 > *:not(:last-child) {
+    margin-left: 10rem;
+}
+
+.space-x-20 > *:not(:last-child) {
+    margin-left: 5rem;
+}
+
+.space-x-10 > *:not(:first-child) {
+    margin-left: 2.5rem;
+} 
+
+.space-x-8 > *:not(:first-child) {
+    margin-left: 2rem;
+} 
+
+.space-x-6 > *:not(:first-child) {
+    margin-left: 1.5rem;
+} 
+
+.space-x-4 > *:not(:first-child) {
+    margin-left: 1rem;
+} 
+
+.space-x-2 > *:not(:first-child) {
+    margin-left: 0.5rem;
+} 
