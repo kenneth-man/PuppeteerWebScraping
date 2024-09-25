@@ -9,7 +9,7 @@ import {
 
 const ContextProvider = () => {
 	// (async () => {
-	// 	const res = await fetchApi("/wildCard/test/1")
+	// 	const res = await getApi("/wildCard/test/1")
 	// 	console.log(res)
 	// })()
 

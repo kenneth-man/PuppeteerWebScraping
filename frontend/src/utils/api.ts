@@ -1,6 +1,6 @@
 import { baseUrl } from "../constants/strings"
 
-export const fetchApi = async (
+const fetchApi = async (
 	path: string,
 	method: string = "GET",
 	init: RequestInit = {},
@@ -25,6 +25,8 @@ export const fetchApi = async (
 
 	return await response.json()
 }
+
+export const getApi = (path: string) => fetchApi(path)
 
 export const postApi = (
 	path: string,
