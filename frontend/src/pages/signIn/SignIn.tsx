@@ -6,7 +6,7 @@ import { signInUpSubmit } from "../../utils";
 import { Context } from "../../context";
 
 const SignIn = () => {
-	const { setLoggedInUsername } = useContext(Context)
+	const { setSignedInUser } = useContext(Context)
 	const navigate = useNavigate()
 	const [email, setEmail]: [string, Dispatch<SetStateAction<string>>] = useState("")
 	const [password, setPassword]: [string, Dispatch<SetStateAction<string>>] = useState("")
@@ -36,7 +36,7 @@ const SignIn = () => {
 								setPassword,
 								setLoading,
 								setError,
-								setLoggedInUsername
+								setSignedInUser
 							}
 						)}
 						className="col space-y-2"

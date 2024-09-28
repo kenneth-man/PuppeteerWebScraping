@@ -17,5 +17,5 @@ export interface ISignInUpFormSetStates {
 	setPassword: Dispatch<SetStateAction<string>>
 	setLoading: Dispatch<SetStateAction<boolean>>
 	setError: Dispatch<SetStateAction<string>>
-	setLoggedInUsername: Dispatch<SetStateAction<string>>
+	setSignedInUser: Dispatch<SetStateAction<string>>
 }

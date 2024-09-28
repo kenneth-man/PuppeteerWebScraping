@@ -16,16 +16,22 @@ const signInUpSubmit = async (
 		setPassword,
 		setLoading,
 		setError,
-		setLoggedInUsername
+		setSignedInUser
 	} = formSetStates
 
 	event.preventDefault()
 	setLoading(true)
 
 	try {
-		//TODO: move 'TUser' type into shared, then use type in both front and back
-		const userData = await postApi("auth/" + type, "include", formData)
-		setLoggedInUsername(userData.email)
+		//TODO:
+			// rename 'src' to 'backend' and update everywhere it's referenced...
+			// move 'TUser' type into shared, then use type in both front and back e.g. const userData: TUser...
+			// move 'tryCatch' function into shared and use in front and back
+			// type the .json responses in back, and move them to shared for validation in front
+			// signed in users shouldn't see sign up or sign in pages
+			// better error messages in red
+		const userData = await postApi("auth/" + type, formData)
+		setSignedInUser(userData.email)
 		navigate("/")
 	} catch (e) {
 		setEmail("")

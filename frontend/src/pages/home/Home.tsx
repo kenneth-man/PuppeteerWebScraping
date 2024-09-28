@@ -1,23 +1,37 @@
 import { Link } from "react-router-dom"
-import React, { useContext } from "react"
+import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import { Context } from "../../context"
 import { Box, Page } from "../../components"
 import { oddsRoute, signInRoute, signUpRoute } from "../../constants/strings"
 import "./Home.css"
+import { postApi } from "../../utils"
 
 const Home = () => {
-	const { loggedInUsername } = useContext(Context)
+	const { signedInUser, setSignedInUser } = useContext(Context)
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const res = await postApi("/auth/checkSignedIn")
+				console.log(res)
+				setSignedInUser(res.signedInUser)
+			} catch(e) {
+				console.log(e)
+			}
+		})()
+	}, [])
+
 	return (
 		<Page
 			className="ctr"
 		>
-			<h1>Hello {loggedInUsername || "there"}!</h1>
+			<h1>Hello {signedInUser || "there"}!</h1>
 			<Box
 				type="flex"
 				flexDirection="col"
 			>
 				{
-					!loggedInUsername && (
+					!signedInUser && (
 						<>
 							<Link to={signUpRoute}>Sign Up</Link>
 							<Link to={signInRoute}>Sign In</Link>

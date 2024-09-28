@@ -15,11 +15,11 @@ const Odds = () => {
 	const getOddsSkyBetNextRacesHorse = async () => {
 		try {
 			setLoading(true)
-			const res = await postApi("/odds", "include", { eventUrl: skyBetNextRacesHorse })
+			const res = await postApi("/odds", { eventUrl: skyBetNextRacesHorse })
 			setOdds(JSON.stringify(res))
 		} catch(e) {
 			console.log(e)
-			navigate(fourZeroThreeRoute);
+			navigate(fourZeroThreeRoute)
 		}
 		setLoading(false)
 	}

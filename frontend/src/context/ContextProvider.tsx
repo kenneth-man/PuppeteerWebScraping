@@ -13,7 +13,7 @@ import {
 } from "../constants/strings"
 
 const ContextProvider = () => {
-	const [loggedInUsername, setLoggedInUsername]: [
+	const [signedInUser, setSignedInUser]: [
 		string,
 		Dispatch<SetStateAction<string>>
 	] = useState("")
@@ -22,8 +22,8 @@ const ContextProvider = () => {
 		<div className="app">
 			<Context.Provider
 				value={{
-					loggedInUsername,
-					setLoggedInUsername
+					signedInUser,
+					setSignedInUser
 				}}
 			>
 				<BrowserRouter>

@@ -2,7 +2,6 @@ import { backendOrigin } from "@kenneth/shared/constants/strings"
 
 const fetchApi = async (
 	path: string,
-	credentials: RequestCredentials = "same-origin",
 	method: string = "GET",
 	init: RequestInit = {}
 ) => {
@@ -13,7 +12,7 @@ const fetchApi = async (
 		{
 			...init,
 			method,
-			credentials: credentials,
+			credentials: "include",
 			headers: {
 				...init.headers,
 				"content-type": "application/json"
