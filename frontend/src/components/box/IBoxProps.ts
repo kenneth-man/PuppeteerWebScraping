@@ -1,31 +1,31 @@
 import { ReactNode } from "react";
 import {
-	boxType,
-	boxDirection,
-	alignItems,
-	justifyContent,
-	justifyItems,
-	alignContent
+	TBoxType,
+	TBoxDirection,
+	TAlignItems,
+	TJustifyContent,
+	TJustifyItems,
+	TAlignContent
 } from "../../models/types";
 
 interface baseBox {
 	children: ReactNode
-	flexDirection?: boxDirection
-	justifyContent?: justifyContent
-	alignItems?: alignItems
+	flexDirection?: TBoxDirection
+	justifyContent?: TJustifyContent
+	alignItems?: TAlignItems
 	styles?: Object
 }
 
 interface flexBox {
-	type: Extract<boxType, "flex">
+	type: Extract<TBoxType, "flex">
 }
 
 interface gridBox {
-	type: Extract<boxType, "grid">
+	type: Extract<TBoxType, "grid">
 	cols: number
 	rows: number
-	justifyItems?: justifyItems
-	alignContent?: alignContent
+	justifyItems?: TJustifyItems
+	alignContent?: TAlignContent
 }
 
 export type boxProps = baseBox & (flexBox | gridBox)

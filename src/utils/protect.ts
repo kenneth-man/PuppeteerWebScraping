@@ -4,6 +4,7 @@ import config from "config"
 import tryCatch from "./tryCatch"
 import throwError from "./throwError"
 import getUserByEmail from "./getUserByEmail"
+import { jwtTokenName } from "../constants/strings"
 
 const protect = async (
 	req: Request,
@@ -13,10 +14,15 @@ const protect = async (
 	await tryCatch(
 		async () => {
 			let token: string
-			const headers = req.headers;
+			const authorization = req.headers?.authorization
+			const cookie = req.headers?.cookie
 
-			if (headers.authorization && headers.authorization.startsWith("Bearer")) {
-				token = headers.authorization.split(" ")[1];
+			if (authorization && authorization.startsWith("Bearer")) {
+				token = authorization.split(" ")[1]
+			}
+
+			if (cookie) {
+				token = cookie.split(jwtTokenName + "=")[1]
 			}
 
 			if (!token) {

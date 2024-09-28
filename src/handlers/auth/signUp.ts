@@ -4,6 +4,7 @@ import { IRequestBody } from "../../models/interfaces"
 import { TPreAccountUser, TSignUp, TUser } from "../../models/types"
 import { client } from "../../server"
 import { addRow, getUserByEmail, hashPassword, signToken, throwError, tryCatch } from "../../utils"
+import { jwtTokenName } from "../../constants/strings"
 
 const signUp = async (
 	req: IRequestBody<TSignUp>,
@@ -62,8 +63,8 @@ const signUp = async (
 
 			res
 				.status(200)
-				.cookie("token", token)
-				.json({...user, "token": token});
+				.cookie(jwtTokenName, token, { httpOnly: true })
+				.json({...user});
 		},
 		res
 	)

@@ -1,3 +1,7 @@
 export const homeRoute = "/"
+export const signInRoute = "/SignIn"
+export const signUpRoute = "/SignUp"
+export const oddsRoute = "/Odds"
+export const fourZeroOneRoute = "/401"
+export const fourZeroThreeRoute = "/403"
 export const fourZeroFourRoute = "*"
-export const baseUrl = "http://localhost:8000"

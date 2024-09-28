@@ -1,7 +1,13 @@
-import FourZeroFour from "./fourZeroFour/FourZeroFour";
+import FourZero from "./fourZero/FourZero";
 import Home from "./home/Home";
+import Odds from "./odds/Odds";
+import SignIn from "./signIn/SignIn";
+import SignUp from "./signUp/SignUp";
 
 export {
-	FourZeroFour,
-	Home
+	FourZero,
+	Home,
+	Odds,
+	SignIn,
+	SignUp
 }

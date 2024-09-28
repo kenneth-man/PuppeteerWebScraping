@@ -1,6 +1,7 @@
-export type boxType = "flex" | "grid"
-export type boxDirection = "row" | "col" | "ctr"
-export type justifyContent = "center" | "start" | "end" | "flex-start" | "flex-end" | "left" | "right" | "normal" | "space-between" | "space-around" | "space-evenly" | "stretch" | "safe center" | "unsafe center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
-export type justifyItems = "normal" | "stretch" | "center" | "start" | "end" | "flex-start" | "flex-end" | "self-start" | "self-end" | "left" | "right" | "baseline" | "first baseline" | "last baseline" | "safe center" | "unsafe center" | "legacy right" | "legacy left" | "legacy center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
-export type alignContent = "center" | "start" | "end" | "flex-start" | "flex-end" | "normal" | "baseline" | "first baseline" | "last baseline" | "space-between" | "space-around" | "space-evenly" | "stretch" | "safe center" | "unsafe center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
-export type alignItems = "normal" | "stretch" | "center" | "start" | "end" | "flex-start" | "flex-end" | "self-start" | "self-end" | "baseline" | "first baseline" | "last baseline" | "safe center" | "unsafe center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
+export type TBoxType = "flex" | "grid"
+export type TBoxDirection = "row" | "col" | "ctr"
+export type TJustifyContent = "center" | "start" | "end" | "flex-start" | "flex-end" | "left" | "right" | "normal" | "space-between" | "space-around" | "space-evenly" | "stretch" | "safe center" | "unsafe center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
+export type TJustifyItems = "normal" | "stretch" | "center" | "start" | "end" | "flex-start" | "flex-end" | "self-start" | "self-end" | "left" | "right" | "baseline" | "first baseline" | "last baseline" | "safe center" | "unsafe center" | "legacy right" | "legacy left" | "legacy center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
+export type TAlignContent = "center" | "start" | "end" | "flex-start" | "flex-end" | "normal" | "baseline" | "first baseline" | "last baseline" | "space-between" | "space-around" | "space-evenly" | "stretch" | "safe center" | "unsafe center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
+export type TAlignItems = "normal" | "stretch" | "center" | "start" | "end" | "flex-start" | "flex-end" | "self-start" | "self-end" | "baseline" | "first baseline" | "last baseline" | "safe center" | "unsafe center" | "inherit" | "initial" | "revert" | "revert-layer" | "unset";
+export type TSignInUp = "signIn" | "signUp"

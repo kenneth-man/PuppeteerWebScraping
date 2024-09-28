@@ -1,22 +1,30 @@
-import React from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 import { Context } from "."
 import { Routes, BrowserRouter, Route } from "react-router-dom"
-import { FourZeroFour, Home } from "../pages"
+import { FourZero, Home, Odds, SignIn, SignUp } from "../pages"
 import {
 	fourZeroFourRoute,
-	homeRoute
+	fourZeroOneRoute,
+	fourZeroThreeRoute,
+	homeRoute,
+	oddsRoute,
+	signInRoute,
+	signUpRoute
 } from "../constants/strings"
 
 const ContextProvider = () => {
-	// (async () => {
-	// 	const res = await getApi("/wildCard/test/1")
-	// 	console.log(res)
-	// })()
+	const [loggedInUsername, setLoggedInUsername]: [
+		string,
+		Dispatch<SetStateAction<string>>
+	] = useState("")
 
 	return (
 		<div className="app">
 			<Context.Provider
-				value={{}}
+				value={{
+					loggedInUsername,
+					setLoggedInUsername
+				}}
 			>
 				<BrowserRouter>
 					<Routes>
@@ -25,8 +33,43 @@ const ContextProvider = () => {
 							Component={Home}
 						/>
 						<Route
+							path={signInRoute}
+							Component={SignIn}
+						/>
+						<Route
+							path={signUpRoute}
+							Component={SignUp}
+						/>
+						<Route
+							path={oddsRoute}
+							Component={Odds}
+						/>
+						<Route
+							path={fourZeroOneRoute}
+							Component={() => (
+								<FourZero
+									errorCode={fourZeroOneRoute}
+									errorMessage={
+										"You aren't currently signed in and are missing" +
+										" the required authentication"
+									}
+								/>
+							)}
+						/>
+						<Route
+							path={fourZeroThreeRoute}
+							Component={() => (
+								<FourZero
+									errorCode={fourZeroThreeRoute}
+									errorMessage={
+										"Your account doesn't have the required authorization"
+									}
+								/>
+							)}
+						/>
+						<Route
 							path={fourZeroFourRoute}
-							Component={FourZeroFour}
+							Component={FourZero}
 						/>
 					</Routes>
 				</BrowserRouter>

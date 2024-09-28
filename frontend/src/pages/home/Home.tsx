@@ -1,22 +1,30 @@
-import React from "react"
+import { Link } from "react-router-dom"
+import React, { useContext } from "react"
+import { Context } from "../../context"
 import { Box, Page } from "../../components"
+import { oddsRoute, signInRoute, signUpRoute } from "../../constants/strings"
 import "./Home.css"
 
 const Home = () => {
+	const { loggedInUsername } = useContext(Context)
 	return (
-		<Page>
-			<h1>Home</h1>
-
+		<Page
+			className="ctr"
+		>
+			<h1>Hello {loggedInUsername || "there"}!</h1>
 			<Box
 				type="flex"
 				flexDirection="col"
 			>
-				<h1>One</h1>
-				<h1>Two</h1>
-				<h1>Three</h1>
-				<h1>Four</h1>
-				<h1>Five</h1>
-				<h1>Six</h1>
+				{
+					!loggedInUsername && (
+						<>
+							<Link to={signUpRoute}>Sign Up</Link>
+							<Link to={signInRoute}>Sign In</Link>
+						</>
+					)
+				}
+				<Link to={oddsRoute}>Get Odds</Link>
 			</Box>
 		</Page>
 	)

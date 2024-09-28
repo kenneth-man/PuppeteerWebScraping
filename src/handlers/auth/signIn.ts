@@ -2,6 +2,7 @@ import { Response } from "express"
 import { IRequestBody } from "../../models/interfaces"
 import { TSignIn, TUser } from "../../models/types"
 import { checkPassword, getUserByEmail, signToken, throwError, tryCatch } from "../../utils"
+import { jwtTokenName } from "../../constants/strings"
 
 const signIn = async (
 	req: IRequestBody<TSignIn>,
@@ -31,8 +32,8 @@ const signIn = async (
 
 			res
 				.status(200)
-				.cookie("token", token)
-				.json({...user, "token": token});
+				.cookie(jwtTokenName, token, { httpOnly: true })
+				.json({...user});
 		},
 		res
 	)

@@ -7,7 +7,7 @@ const Box = ({
 	flexDirection = "row",
 	justifyContent = "space-evenly",
 	alignItems = "center",
-	type = "flex",
+	type,
 	styles,
 	...props
 }: boxProps) => {
