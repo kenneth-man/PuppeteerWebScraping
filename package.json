@@ -1,16 +1,15 @@
 {
   "name": "puppeteerwebscraping",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project dependencies",
   "scripts": {
-    "start": "npx tsx ./src/server.ts",
     "test": "jest"
   },
   "workspaces": [
+	"backend",
     "frontend",
     "scripts",
-    "shared",
-    "src"
+    "shared"
   ],
   "author": "Kenneth",
   "license": "ISC",
@@ -49,9 +48,9 @@
     "vite": "^5.4.8"
   },
   "testMatch": [
+    "**/backend/**/*.{ts}",
     "**/frontend/**/*.{ts}",
     "**/scripts/**/*.{ts}",
-    "**/shared/**/*.{ts}",
-    "**/src/**/*.{ts}"
+    "**/shared/**/*.{ts}"
   ]
 }

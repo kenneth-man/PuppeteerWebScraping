@@ -11,9 +11,9 @@
 		"jsx": "react"
 	},
 	"include": [
+		"./backend/**/*",
 		"./frontend/**/*",
 		"./scripts/**/*",
-		"./shared/**/*",
-		"./src/**/*"
+		"./shared/**/*"
 	]
 }

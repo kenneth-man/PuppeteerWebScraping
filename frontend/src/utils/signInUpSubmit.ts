@@ -24,7 +24,6 @@ const signInUpSubmit = async (
 
 	try {
 		//TODO:
-			// rename 'src' to 'backend' and update everywhere it's referenced...
 			// move 'TUser' type into shared, then use type in both front and back e.g. const userData: TUser...
 			// move 'tryCatch' function into shared and use in front and back
 			// type the .json responses in back, and move them to shared for validation in front

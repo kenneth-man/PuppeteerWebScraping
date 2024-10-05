@@ -1,10 +1,13 @@
 {
-	"name": "@kenneth/src",
+	"name": "@kenneth/backend",
 	"version": "1.0.0",
-	"description": "API source code",
+	"description": "Backend API code",
 	"main": "",
 	"author": "Kenneth",
 	"license": "ISC",
+	"scripts": {
+    	"start": "npx tsx ./server.ts"
+	},
 	"dependencies": {
 		"@kenneth/shared": "*"
 	}

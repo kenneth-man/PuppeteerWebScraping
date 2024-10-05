@@ -3,10 +3,10 @@
 
 - ### For more information on running the command line scripts, refer to the `README.md` located in `rootDir/scripts`
 
-- ### For more information on the API, refer to the `README.md` located in `rootDir/src`
+- ### For more information on the Backend API, refer to the `README.md` located in `rootDir/backend`
 	- ### The steps to start the API are described under `Setup` of this file
 
-- ### I'm using `NPM Workspaces` to re-use common functionality between `rootDir/scripts` and `rootDir/src`, by importing from `rootDir/shared/*`
+- ### I'm using `NPM Workspaces` to re-use common functionality between `rootDir/scripts` and `rootDir/backend`, by importing from `rootDir/shared/*`
 
 - ### `rootDir/postgres` contains a dockerfile that's used to get a postgres server running in 2 commands
 	- ### The steps to start the postgres server are described under `Setup` of this file
@@ -23,7 +23,7 @@
 
 # ▶️ Setup
 ## Add a `config` directory for environment variables (Secrets)
-### 1. In the project root directory, create a directory called `config`
+### 1. In `rootDir/backend`, create a directory called `config`
 
 ### 2. Inside `config`, create a file called `default.json` and paste the following json inside it
 ```
@@ -38,7 +38,8 @@
 - ### The structure should look like...
 ```
 <rootDir>
- └── config
+ └── backend
+	└── config
       └── default.json
 ```
 - ### How are `config` variables used?
@@ -71,7 +72,7 @@ docker build -t postgresdb .
 docker run --name postgresdb-container -p 5432:5432 -e POSTGRES_DB=PuppeteerWebScrapingDB -e POSTGRES_USER=Kenneth -e POSTGRES_PASSWORD=abc123 -d postgresdb
 ```
 
-- ### The `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` values above, correspond to the values defined in `rootDir/src/server.ts` lines `9-11`
+- ### The `POSTGRES_DB`, `POSTGRES_USER` and `POSTGRES_PASSWORD` values above, correspond to the values defined in `rootDir/backend/server.ts` lines `9-11`
 
 - ### ***Note:*** If you have already ran the container before, open `Docker Desktop` and click the `Play` button on the container or...
 ```
@@ -80,15 +81,20 @@ docker start [CONTAINER_ID]
 
 <br>
 
-## Start the API and connect to the postgres server
+## Start the Backend API and connect to the postgres server
 ### 1. Make sure you're in the project root directory and install dependencies
 ```
 npm i
 ```
 
-### 2. Make sure the postgres server is running, then start the API
+### 2. Make sure you're in the `backend` directory
 ```
- npm start
+cd backend
+```
+
+### 3. Make sure the postgres server is running, then start the API
+```
+npm start
 ```
 
 <br>

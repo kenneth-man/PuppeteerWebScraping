@@ -1,4 +1,4 @@
-# API
+# Backend API
 - ### There are currently 3 endpoints
 	- ### `/auth/signUp`
 		- ### Requires a request body with the following fields
