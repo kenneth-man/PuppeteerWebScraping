@@ -6,7 +6,7 @@
 	"author": "Kenneth",
 	"license": "ISC",
 	"scripts": {
-    	"start": "npx tsx ./server.ts"
+    	"start": "set NODE_ENV=development&& npx tsx ./server.ts"
 	},
 	"dependencies": {
 		"@kenneth/shared": "*"
