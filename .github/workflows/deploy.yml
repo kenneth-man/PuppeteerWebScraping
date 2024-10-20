@@ -28,8 +28,8 @@ jobs:
           ECR_REPOSITORY_FRONTEND_URI: ${{secrets.ECR_REPOSITORY_FRONTEND_URI}}
           IMAGE_TAG: ${{github.run_id}}
         run: |
-          cd frontend
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND_URI:$IMAGE_TAG .
+          # cd frontend
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND_URI:$IMAGE_TAG -f frontend/Dockerfile .
           echo "-----------"
           docker image ls
           echo "-----------"

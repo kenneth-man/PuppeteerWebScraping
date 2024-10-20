@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { skyBetNextRacesHorse } from "@kenneth/shared/constants/strings";
-import { Box, Page } from "../../components"
+import { Page } from "../../components"
 import { postApi } from "../../utils"
 import { fourZeroThreeRoute } from "../../constants/strings";
 import "./Odds.css"
