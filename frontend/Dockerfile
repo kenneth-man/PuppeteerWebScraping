@@ -1,23 +1,13 @@
 FROM node:22.7.0
 
-WORKDIR /temp
+WORKDIR /app
 
-COPY package.json package-lock.json .
-
-RUN npm install
-
-COPY shared /temp/shared
-
-COPY frontend /temp/frontend
-
-WORKDIR /temp/frontend
+COPY . .
 
 RUN npm install
 
-# do i need this?
-ENV PORT=3000
+WORKDIR /app/frontend
 
-# do i need this?
-EXPOSE 3000
+EXPOSE 5173
 
 CMD [ "npm", "start" ]
