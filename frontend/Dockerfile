@@ -2,13 +2,17 @@ FROM node:22.7.0
 
 WORKDIR /temp
 
-COPY package.json .
-
-COPY shared/package.json ../shared/
+COPY package.json package-lock.json .
 
 RUN npm install
 
-COPY . .
+COPY shared /temp/shared
+
+COPY frontend /temp/frontend
+
+WORKDIR /temp/frontend
+
+RUN npm install
 
 # do i need this?
 ENV PORT=3000
