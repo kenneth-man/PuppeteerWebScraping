@@ -29,5 +29,7 @@ jobs:
           IMAGE_TAG: ${{github.run_id}}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND_URI:$IMAGE_TAG .
-          ls
+          echo "-----------"
+          docker image ls
+          echo "-----------"
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND_URI:$IMAGE_TAG
