@@ -1,0 +1,4 @@
+// TODO: update frontend readme
+// TODO: update root readme (+ config file changes for backend dev and prod)
+// TODO: update root readme around aws infrastructure
+// TODO: Make frontend look nicer
