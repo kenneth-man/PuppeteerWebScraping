@@ -2,7 +2,7 @@ name: Deploy to AWS resources
 
 on:
   push:
-    branches: ["main"]
+    branches: ["prod"]
 
 jobs:
   deploy-frontend-image-to-ecr:
@@ -28,9 +28,5 @@ jobs:
           ECR_REPOSITORY_FRONTEND: ${{secrets.ECR_REPOSITORY_FRONTEND}}
           IMAGE_TAG: ${{github.run_id}}
         run: |
-          # cd frontend
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -f frontend/Dockerfile .
-          echo "-----------"
-          docker image ls
-          echo "-----------"
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG
