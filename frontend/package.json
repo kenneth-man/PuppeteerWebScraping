@@ -7,7 +7,7 @@
 	"license": "ISC",
 	"proxy": "http://localhost:8000",
 	"scripts": {
-		"start": "vite"
+		"start": "vite --host"
 	},
 	"dependencies": {
 		"@kenneth/shared": "*"
