@@ -4,6 +4,8 @@ WORKDIR /temp
 
 COPY package.json .
 
+COPY ../shared/package.json ../shared/
+
 RUN npm install
 
 COPY . .

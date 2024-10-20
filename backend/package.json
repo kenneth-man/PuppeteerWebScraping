@@ -9,6 +9,6 @@
     	"start": "set NODE_ENV=development&& npx tsx ./server.ts"
 	},
 	"dependencies": {
-		"@kenneth/shared": "*"
+		"@kenneth/shared": "file:../shared"
 	}
 }

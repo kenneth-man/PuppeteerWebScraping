@@ -10,6 +10,6 @@
 		"start": "vite"
 	},
 	"dependencies": {
-		"@kenneth/shared": "*"
+		"@kenneth/shared": "file:../shared"
 	}
 }
