@@ -3,13 +3,22 @@ import helmet from "helmet"
 import cors from "cors"
 import { authRouter, oddsRouter } from "./routers"
 import { protect } from "./utils"
-import { frontendOrigin } from "@kenneth/shared/constants/strings"
+import { allowedOrigins } from "./constants/arrays"
 
 const app = express()
 
-// allow requests from frontend origin with credentials (jwt sent in cookie)
+// allow requests from specified domains with credentials (jwt sent in cookie)
 app.use(cors({
-	origin: frontendOrigin,
+	origin: (origin, callback) => {
+		// allow same-domain requests, otherwise check from allowed domains
+		if (!origin || allowedOrigins.find(curr => curr === origin)) {
+			callback(null, origin);
+		} else {
+			callback(
+				new Error("Blocked by CORS - Cannot accept requests from this IP address")
+			);
+		}
+	},
 	credentials: true
 }))
 

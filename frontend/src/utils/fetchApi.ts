@@ -1,5 +1,3 @@
-import { backendOrigin } from "@kenneth/shared/constants/strings"
-
 const fetchApi = async (
 	path: string,
 	method: string = "GET",
@@ -8,7 +6,10 @@ const fetchApi = async (
 	if (!init.headers) init.headers = {}
 
 	const response = await fetch(
-		new URL(path, backendOrigin),
+		new URL(
+			path,
+			import.meta.env.VITE_BACKEND_DOMAIN
+		),
 		{
 			...init,
 			method,
@@ -19,8 +20,6 @@ const fetchApi = async (
 			}
 		}
 	)
-
-	console.log(response)
 
 	if (!response.ok) {
 		throw new Error(response.statusText)

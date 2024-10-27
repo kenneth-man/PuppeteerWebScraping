@@ -1,0 +1,12 @@
+// Need this tsconfig.json file so that "npx tsc" will create a "dist" directory in the path
+// specified at "outDir" below
+	// ("npm run build" package.json script is ran in the backend Dockerfile to publish to
+	// prod ecr, ecs)
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+	  "outDir": "./dist",
+	  "rootDir": "."
+	},
+	"include": ["./**/*"]
+}
