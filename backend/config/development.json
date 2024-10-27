@@ -1,0 +1,6 @@
+{
+	"VARS": {
+		"postgres_password": "abc123",
+		"jwt_key": "lorem ipsum"
+	}
+}

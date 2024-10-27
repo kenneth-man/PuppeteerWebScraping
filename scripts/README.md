@@ -2,6 +2,11 @@
 - ### To scrape odds for an event from the following bookmaker sites:
 	- ### https://m.skybet.com/
 
+- ### The Url that can be passed into a script or the backend `/odds` endpoint is determined by a `map` data structure in `rootDir/shared/constants/maps.ts`
+	- ### The reason for this mapping is to cover the case in the future where a Url is dynamic (e.g. with unique id) and not a static Url like `https://m.skybet.com/horse-racing`
+	- ### Each page can have a different layout of elements that changes which parents and children elements need to be selected
+	- ### So, as long as a Url contains a common base Url, the same function will be called to scrape that page
+
 <br>
 
 # ▶️ Run a script
@@ -10,7 +15,7 @@
 npm i
 ```
 
-### 2. Make sure you're in the `scripts` directory
+### 2. Go to the `scripts` directory
 ```
 cd scripts
 ```

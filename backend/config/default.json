@@ -1,0 +1,5 @@
+{
+	"VARS": {
+		"jwt_expiration": "5h"
+	}
+}

@@ -31,7 +31,7 @@ const protect = async (
 
 			const decodedToken = <jwt.JwtPayload>jwt.verify(
 				token,
-				config.get("SECRETS.jwt_key")
+				config.get("VARS.jwt_key")
 			);
 
 			if (decodedToken?.email) {

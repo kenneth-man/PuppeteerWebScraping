@@ -8,7 +8,7 @@ export const client = new pg.Client({
 	port: postgresPort,
 	database: "PuppeteerWebScrapingDB",
 	user: "Kenneth",
-	password: config.get("SECRETS.postgres_password")
+	password: config.get("VARS.postgres_password")
 })
 
 client.connect();
