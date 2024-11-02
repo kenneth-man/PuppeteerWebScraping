@@ -26,9 +26,9 @@ const Odds = () => {
 
 	return (
 		<Page
+			title="Odds"
 			className="ctr space-y-2"
 		>
-			<h1>Odds</h1>
 			{error && ( <h1 style={{ color: "red" }}>{error}</h1>)}
 			{
 				loading ? (

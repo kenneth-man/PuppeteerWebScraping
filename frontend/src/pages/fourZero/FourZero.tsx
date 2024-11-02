@@ -16,6 +16,7 @@ const FourZero = ({
 }: IFourZeroProps) => {
 	return (
 		<Page
+			title="4XX Error"
 			className="ctr"
 		>
 			<h1>{errorCode.split("/")[1]}</h1>

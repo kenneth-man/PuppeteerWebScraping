@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import jwt from "jsonwebtoken"
 import config from "config"
-import { getUserByEmail, throwError, tryCatch } from "../../utils"
+import { throwError, tryCatch } from "../../utils"
 import { jwtTokenName } from "../../constants/strings"
 
 const checkSignedIn = async (

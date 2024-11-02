@@ -15,9 +15,9 @@ const SignIn = () => {
 
 	return (
 		<Page
+			title="Sign In"
 			className="ctr"
 		>
-			<h1>Sign In</h1>
 			{
 				loading ? (
 					<h2>Signing in, please wait</h2>

@@ -29,6 +29,22 @@ jobs:
           IMAGE_TAG: ${{github.run_id}}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -f frontend/Dockerfile .
-          # cd sample
-          # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG
+
+  update-frontend-service-on-ecs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: eu-west-2
+
+      - name: Update ECS service with latest ECR image
+        env:
+          CLUSTER: ${{secrets.ECS_CLUSTER}}
+          SERVICE: ${{secrets.ECS_SERVICE_FRONTEND}}
+        run: aws ecs update-service --region eu-west-2 --cluster $CLUSTER --service $SERVICE --force-new-deployment
+
+    needs: [deploy-frontend-image-to-ecr]

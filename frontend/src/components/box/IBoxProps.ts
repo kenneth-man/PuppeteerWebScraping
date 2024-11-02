@@ -13,6 +13,7 @@ interface baseBox {
 	flexDirection?: TBoxDirection
 	justifyContent?: TJustifyContent
 	alignItems?: TAlignItems
+	className?: string
 	styles?: Object
 }
 

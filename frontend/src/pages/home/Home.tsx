@@ -23,6 +23,7 @@ const Home = () => {
 
 	return (
 		<Page
+			title="Puppeteer Web Scraping"
 			className="ctr"
 		>
 			<h1>Hello {signedInUser || "there"}!</h1>
@@ -31,14 +32,17 @@ const Home = () => {
 				flexDirection="col"
 			>
 				{
-					!signedInUser && (
+					!signedInUser ? (
 						<>
 							<Link to={signUpRoute}>Sign Up</Link>
 							<Link to={signInRoute}>Sign In</Link>
 						</>
+					) : (
+						<>
+							<Link to={oddsRoute}>Get Odds</Link>
+						</>
 					)
 				}
-				<Link to={oddsRoute}>Get Odds</Link>
 			</Box>
 		</Page>
 	)

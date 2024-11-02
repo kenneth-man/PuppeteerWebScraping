@@ -8,6 +8,7 @@ const Box = ({
 	justifyContent = "space-evenly",
 	alignItems = "center",
 	type,
+	className,
 	styles,
 	...props
 }: boxProps) => {
@@ -24,7 +25,12 @@ const Box = ({
 	
 	return (
 		<div
-			className={`space-y-4 ${type} ${flexDirection}`}
+			className={`
+				${flexDirection == "col" ? "space-y-4" : "space-x-4"}
+				${type}
+				${flexDirection}
+				${className}
+			`}
 			style={{
 				justifyContent,
 				alignItems,

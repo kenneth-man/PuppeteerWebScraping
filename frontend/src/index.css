@@ -32,12 +32,14 @@ body {
 	--darkBlue: #0064a5;
 	--baseBlue: #336791;
 	--lightBlue: #008bb9;
+	--turquoise: #40E0D0;
 	--darkGrey: #848484;
 	--baseGrey: #666666;
 	--lightGrey: #585858;
 	--darkOrange: #cc3b03;
 	--baseOrange: #d24b03;
 	--lightOrange: #f26522;
+	--puppeteerGreen: #00d8a2;
 }
 
 .row,
@@ -171,4 +173,16 @@ a,button:hover {
 
 .space-x-2 > *:not(:first-child) {
     margin-left: 0.5rem;
-} 
+}
+
+@media screen and (max-width: 600px) {
+	h1 {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-height: 400px) {
+	h1 {
+		font-size: 1rem;
+	}
+}
