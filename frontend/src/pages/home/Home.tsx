@@ -3,8 +3,8 @@ import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from
 import { Context } from "../../context"
 import { Box, Page } from "../../components"
 import { oddsRoute, signInRoute, signUpRoute } from "../../constants/strings"
-import "./Home.css"
 import { getApi, postApi } from "../../utils"
+import "./Home.css"
 
 const Home = () => {
 	const { signedInUser, setSignedInUser } = useContext(Context)
@@ -63,7 +63,6 @@ const Home = () => {
 						Send Test Request
 					</button>
 				</Box>
-				
 			</Box>
 		</Page>
 	)
