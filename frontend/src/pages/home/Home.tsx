@@ -4,16 +4,24 @@ import { Context } from "../../context"
 import { Box, Page } from "../../components"
 import { oddsRoute, signInRoute, signUpRoute } from "../../constants/strings"
 import "./Home.css"
-import { postApi } from "../../utils"
+import { getApi, postApi } from "../../utils"
 
 const Home = () => {
 	const { signedInUser, setSignedInUser } = useContext(Context)
+	const [testingBackendAPIData, setTestingBackendAPIData]: [
+		string,
+		Dispatch<SetStateAction<string>>
+	] = useState<string>("")
+
+	const testBackendAPI = async () => {
+		const res = await getApi("/testing")
+		setTestingBackendAPIData(res.testOutput)
+	}
 
 	useEffect(() => {
 		(async () => {
 			try {
 				const res = await postApi("/auth/checkSignedIn")
-				console.log(res)
 				setSignedInUser(res.signedInUser)
 			} catch(e) {
 				console.log(e)
@@ -43,6 +51,19 @@ const Home = () => {
 						</>
 					)
 				}
+				<Box
+					type="flex"
+					justifyContent="center"
+					className="testing"
+				>
+					<p>Test the Backend API: {testingBackendAPIData || "Nothing returned..."}</p>
+					<button
+						onClick={testBackendAPI}
+					>
+						Send Test Request
+					</button>
+				</Box>
+				
 			</Box>
 		</Page>
 	)

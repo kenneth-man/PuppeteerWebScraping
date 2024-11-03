@@ -22,10 +22,25 @@ const checkSignedIn = async (
 				return
 			}
 
-			const decodedToken = <jwt.JwtPayload>jwt.verify(
-				token,
-				config.get("VARS.jwt_key")
-			);
+			let decodedToken: jwt.JwtPayload
+
+			try {
+				decodedToken = <jwt.JwtPayload>jwt.verify(
+					token,
+					config.get("VARS.jwt_key")
+				);
+			} catch (e) {
+				if (
+					e instanceof Error &&
+					e.name === "TokenExpiredError" &&
+					e.message === "jwt expired"
+				) {
+					res
+						.status(200)
+						.json({ signedInUser: "" });
+					return
+				}
+			}
 
 			if (decodedToken?.email) {
 				res

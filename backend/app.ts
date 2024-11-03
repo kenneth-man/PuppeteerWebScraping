@@ -1,7 +1,7 @@
 import express from "express"
 import helmet from "helmet"
 import cors from "cors"
-import { authRouter, oddsRouter } from "./routers"
+import { authRouter, oddsRouter, testingRouter } from "./routers"
 import { protect } from "./utils"
 import { allowedOrigins } from "./constants/arrays"
 
@@ -30,5 +30,6 @@ app.use(express.json())
 
 app.use("/auth", authRouter)
 app.use("/odds", protect, oddsRouter)
+app.use("/testing", testingRouter)
 
 export default app
