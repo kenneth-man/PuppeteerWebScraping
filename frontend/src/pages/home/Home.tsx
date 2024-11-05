@@ -14,8 +14,12 @@ const Home = () => {
 	] = useState<string>("")
 
 	const testBackendAPI = async () => {
-		const res = await getApi("/testing")
-		setTestingBackendAPIData(res.testOutput)
+		try {
+			const res = await getApi("/testing")
+			setTestingBackendAPIData(res.testOutput)
+		} catch {
+			setTestingBackendAPIData("Error whilst fetching...")
+		}
 	}
 
 	useEffect(() => {

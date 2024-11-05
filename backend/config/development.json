@@ -1,5 +1,8 @@
 {
 	"VARS": {
+		"postgres_host": "localhost",
+		"postgres_db_name": "PuppeteerWebScrapingDB",
+		"postgres_user": "Kenneth",
 		"postgres_password": "abc123",
 		"jwt_key": "lorem ipsum"
 	}
