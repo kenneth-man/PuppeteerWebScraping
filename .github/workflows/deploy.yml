@@ -45,5 +45,62 @@ jobs:
           CLUSTER: ${{secrets.ECS_CLUSTER}}
           SERVICE: ${{secrets.ECS_SERVICE_FRONTEND}}
         run: aws ecs update-service --region eu-west-2 --cluster $CLUSTER --service $SERVICE --force-new-deployment
-
     needs: [deploy-frontend-image-to-ecr]
+
+  deploy-backend-image-to-ecr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: eu-west-2
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Pass secrets to Docker image, Build, tag, and push image to Amazon ECR
+        uses: docker/build-push-action@v6
+        env:
+          ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
+          ECR_REPOSITORY_BACKEND: ${{secrets.ECR_REPOSITORY_BACKEND}}
+        with:
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:latest
+          file: backend/Dockerfile
+          context: .
+          secrets: |
+            "RDS_POSTGRES_ENDPOINT=${{secrets.RDS_POSTGRES_ENDPOINT}}"
+            "RDS_POSTGRES_MASTER_PASSWORD=${{secrets.RDS_POSTGRES_MASTER_PASSWORD}}"
+            "RDS_POSTGRES_MASTER_USERNAME=${{secrets.RDS_POSTGRES_MASTER_USERNAME}}"
+            "RDS_POSTGRES_NAME=${{secrets.RDS_POSTGRES_NAME}}"
+            "JWT_KEY=${{secrets.JWT_KEY}}"
+
+  update-backend-service-on-ecs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: eu-west-2
+
+      - name: Update ECS service with latest ECR image
+        env:
+          CLUSTER: ${{secrets.ECS_CLUSTER}}
+          SERVICE: ${{secrets.ECS_SERVICE_BACKEND}}
+        run: aws ecs update-service --region eu-west-2 --cluster $CLUSTER --service $SERVICE --force-new-deployment
+    needs: [deploy-backend-image-to-ecr]

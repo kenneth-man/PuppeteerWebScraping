@@ -19,11 +19,10 @@ app.listen(
 		console.log("API is running...")
 		console.log(`> Port: ${apiPort}`)
 		try {
-			// TODO: uncomment
-			// await client.query("SELECT * FROM users WHERE id = 1")
-			// console.log(`> Connected to Postgres Server`)
+			await client.query("SELECT * FROM users WHERE id = 1")
+			console.log(`> Connected to Postgres Server...`)
 		} catch(e) {
-			console.log("Could not connect to postgres server...")
+			console.log("> Could not connect to postgres server...")
 			console.log(`> ${String(e)}`)
 		}
 	}
