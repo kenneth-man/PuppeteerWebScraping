@@ -1,8 +1,10 @@
 import React from "react"
-import { IPageProps } from "./IPageProps"
+import IPageProps from "./IPageProps"
 import "./Page.css"
 import { Box } from ".."
 import PuppeteerLogo from "../../../../res/puppeteerLogo.png"
+import { Link } from "react-router-dom"
+import { homeRoute } from "../../constants/strings"
 
 const Page = ({
 	title,
@@ -18,16 +20,21 @@ const Page = ({
 			type="flex"
 			className="pageHeader"
 		>
-			<img
-				src={PuppeteerLogo}
-				alt="Puppeteer Logo"
-				className="pageLogo"
-			/>
-			<h1
-				className="pageTitle"
+			<Link
+				to={homeRoute}
+				className="pageTitleWrapper space-x-2"
 			>
-				{title}
-			</h1>
+				<img
+					src={PuppeteerLogo}
+					alt="Puppeteer Logo"
+					className="pageLogo"
+				/>
+				<h1
+					className="pageTitle"
+				>
+					{title}
+				</h1>
+			</Link>
 		</Box>
 		{children}
 	</div>

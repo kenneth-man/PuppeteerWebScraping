@@ -5,6 +5,7 @@ import { Box, Page } from "../../components"
 import { oddsRoute, signInRoute, signUpRoute } from "../../constants/strings"
 import { getApi, postApi } from "../../utils"
 import "./Home.css"
+import Button from "../../components/button/Button"
 
 const Home = () => {
 	const { signedInUser, setSignedInUser } = useContext(Context)
@@ -61,11 +62,12 @@ const Home = () => {
 					className="testing"
 				>
 					<p>Test the Backend API: {testingBackendAPIData || "Nothing returned..."}</p>
-					<button
+					<Button
 						onClick={testBackendAPI}
+						type="button"
 					>
 						Send Test Request
-					</button>
+					</Button>
 				</Box>
 			</Box>
 		</Page>

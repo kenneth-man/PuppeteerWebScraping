@@ -8,7 +8,7 @@ import {
 	TAlignContent
 } from "../../models/types";
 
-interface baseBox {
+interface IBaseBox {
 	children: ReactNode
 	flexDirection?: TBoxDirection
 	justifyContent?: TJustifyContent
@@ -17,11 +17,11 @@ interface baseBox {
 	styles?: Object
 }
 
-interface flexBox {
+interface IFlexBox {
 	type: Extract<TBoxType, "flex">
 }
 
-interface gridBox {
+interface IGridBox {
 	type: Extract<TBoxType, "grid">
 	cols: number
 	rows: number
@@ -29,4 +29,4 @@ interface gridBox {
 	alignContent?: TAlignContent
 }
 
-export type boxProps = baseBox & (flexBox | gridBox)
+export type TBoxProps = IBaseBox & (IFlexBox | IGridBox)

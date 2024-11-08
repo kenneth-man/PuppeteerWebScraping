@@ -1,5 +1,5 @@
 import React from "react"
-import { boxProps } from "./IBoxProps"
+import { TBoxProps } from "./TBoxProps"
 import "./Box.css"
 
 const Box = ({
@@ -11,7 +11,7 @@ const Box = ({
 	className,
 	styles,
 	...props
-}: boxProps) => {
+}: TBoxProps) => {
 	let gridTemplate = {}
 
 	if ("cols" in props) {

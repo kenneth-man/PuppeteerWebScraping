@@ -1,0 +1,21 @@
+.button {
+	display: flex;
+	font-weight: 500;
+	color: var(--puppeteerGreen);
+	border-radius: 5rem;
+	padding: 0.4rem 0.8rem;
+	border: 0.2rem solid var(--puppeteerGreen);
+	background-color: var(--lightGrey);
+}
+
+.button:hover {
+	box-shadow: 0.1rem 0.2rem 0.3rem var(--darkGrey);
+	color: var(--puppeteerGreenDark);
+	transform: translate(0, -0.1rem);
+}
+
+.button:active {
+	box-shadow: none;
+	transform: translate(0, 0.1rem);
+	border: 0.2rem solid var(--puppeteerGreenDark);
+}

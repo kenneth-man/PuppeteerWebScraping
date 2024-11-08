@@ -5,6 +5,7 @@ import { Page } from "../../components"
 import { postApi } from "../../utils"
 import { fourZeroThreeRoute } from "../../constants/strings";
 import "./Odds.css"
+import Button from "../../components/button/Button";
 
 const Odds = () => {
 	const navigate = useNavigate()
@@ -34,20 +35,19 @@ const Odds = () => {
 				loading ? (
 					<h2>Scraping site, please wait</h2>
 				) : (
-					<>
-						<button
-							onClick={getOddsSkyBetNextRacesHorse}
-						>
-							Get Odds for {skyBetNextRacesHorse}
-						</button>
-					</>
+					<Button
+						onClick={getOddsSkyBetNextRacesHorse}
+						type="button"
+					>
+						Get Odds for {skyBetNextRacesHorse}
+					</Button>
 				)
 			}
 			{
 				odds && (
 					<>
-						<h2>Odds Data:</h2>
-						<p>{odds}</p>
+						<h2>Data:</h2>
+						<p className="oddsData">{odds}</p>
 					</>
 				)
 			}

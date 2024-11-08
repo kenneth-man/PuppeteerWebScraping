@@ -1,8 +1,10 @@
 import { ReactNode } from "react"
 
-export interface IPageProps {
+interface IPageProps {
 	title: string
 	children: ReactNode
 	className?: string
 	styles?: Object
 }
+
+export default IPageProps
