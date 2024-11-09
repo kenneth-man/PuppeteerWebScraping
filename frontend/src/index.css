@@ -45,6 +45,7 @@ body {
 
 .app {
 	display: flex;
+	flex-direction: column;
 	position: relative;
 }
 
@@ -60,6 +61,8 @@ body {
 	--darkOrange: #cc3b03;
 	--baseOrange: #d24b03;
 	--lightOrange: #f26522;
+	--lightPink: #e66465;
+	--lightPurple: #9198e5;
 	--puppeteerGreen: #00d8a2;
 	--puppeteerGreenDark: #009d75;
 }
@@ -69,11 +72,6 @@ body {
 .ctr {
 	display: flex;
 	align-items: center;
-}
-
-.row,
-.col {
-	justify-content: space-evenly;
 }
 
 .col {
@@ -165,15 +163,15 @@ a,button:hover {
 }
 
 /*'space-x-...' */
-.space-x-80 > *:not(:last-child) {
+.space-x-80 > *:not(:first-child) {
     margin-left: 20rem;
 }
 
-.space-x-40 > *:not(:last-child) {
+.space-x-40 > *:not(:first-child) {
     margin-left: 10rem;
 }
 
-.space-x-20 > *:not(:last-child) {
+.space-x-20 > *:not(:first-child) {
     margin-left: 5rem;
 }
 

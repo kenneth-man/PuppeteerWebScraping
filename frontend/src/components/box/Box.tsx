@@ -5,8 +5,9 @@ import "./Box.css"
 const Box = ({
 	children,
 	flexDirection = "row",
-	justifyContent = "space-evenly",
-	alignItems = "center",
+	justifyContent,
+	alignItems,
+	spacing = true,
 	type,
 	className,
 	styles,
@@ -26,7 +27,7 @@ const Box = ({
 	return (
 		<div
 			className={`
-				${flexDirection == "col" ? "space-y-4" : "space-x-4"}
+				${spacing && (flexDirection == "col" ? "space-y-4" : "space-x-4")}
 				${type}
 				${flexDirection}
 				${className}

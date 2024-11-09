@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom"
 import React, { Dispatch, SetStateAction, useContext, useEffect, useState } from "react"
 import { Context } from "../../context"
-import { Box, Page } from "../../components"
+import { Box, Page, Button, Link } from "../../components"
 import { oddsRoute, signInRoute, signUpRoute } from "../../constants/strings"
 import { getApi, postApi } from "../../utils"
 import "./Home.css"
-import Button from "../../components/button/Button"
 
 const Home = () => {
 	const { signedInUser, setSignedInUser } = useContext(Context)
@@ -36,8 +34,7 @@ const Home = () => {
 
 	return (
 		<Page
-			title="Puppeteer Web Scraping"
-			className="ctr"
+			title="Bookmaker Web Scraping"
 		>
 			<h1>Hello {signedInUser || "there"}!</h1>
 			<Box
@@ -47,12 +44,27 @@ const Home = () => {
 				{
 					!signedInUser ? (
 						<>
-							<Link to={signUpRoute}>Sign Up</Link>
-							<Link to={signInRoute}>Sign In</Link>
+							<Link
+								reactRouter
+								url={signUpRoute}
+							>
+								➤ Sign Up
+							</Link>
+							<Link
+								reactRouter
+								url={signInRoute}
+							>
+								➤ Sign In
+							</Link>
 						</>
 					) : (
 						<>
-							<Link to={oddsRoute}>Get Odds</Link>
+							<Link
+								reactRouter
+								url={oddsRoute}
+							>
+								➤ Get Odds
+							</Link>
 						</>
 					)
 				}

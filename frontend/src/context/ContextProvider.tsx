@@ -11,6 +11,7 @@ import {
 	signInRoute,
 	signUpRoute
 } from "../constants/strings"
+import { Navbar } from "../components"
 
 const ContextProvider = () => {
 	const [signedInUser, setSignedInUser]: [
@@ -27,6 +28,7 @@ const ContextProvider = () => {
 				}}
 			>
 				<BrowserRouter>
+					<Navbar/>
 					<Routes>
 						<Route
 							path={homeRoute}

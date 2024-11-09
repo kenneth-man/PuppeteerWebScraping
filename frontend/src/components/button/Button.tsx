@@ -4,8 +4,8 @@ import "./Button.css"
 
 const Button = ({
 	children,
-	onClick,
 	type,
+	onClick,
 	className,
 	styles
 }: IButtonProps) => {

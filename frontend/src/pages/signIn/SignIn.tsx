@@ -1,9 +1,9 @@
 import React, { useState, Dispatch, SetStateAction, useContext } from "react"
 import { useNavigate } from "react-router-dom";
-import { Box, Page } from "../../components"
-import "./SignIn.css"
+import { Box, Button, Page } from "../../components"
 import { signInUpSubmit } from "../../utils";
 import { Context } from "../../context";
+import "./SignIn.css"
 
 const SignIn = () => {
 	const { setSignedInUser } = useContext(Context)
@@ -16,7 +16,6 @@ const SignIn = () => {
 	return (
 		<Page
 			title="Sign In"
-			className="ctr"
 		>
 			{
 				loading ? (
@@ -63,11 +62,11 @@ const SignIn = () => {
 								type="password"
 							/>
 						</Box>
-						<button
+						<Button
 							type="submit"
 						>
 							Sign In
-						</button>
+						</Button>
 					</form>
 				)
 			}

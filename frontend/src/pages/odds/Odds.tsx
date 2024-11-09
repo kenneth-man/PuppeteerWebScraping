@@ -1,11 +1,10 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { skyBetNextRacesHorse } from "@kenneth/shared/constants/strings";
-import { Page } from "../../components"
+import { Page, Button } from "../../components"
 import { postApi } from "../../utils"
 import { fourZeroThreeRoute } from "../../constants/strings";
 import "./Odds.css"
-import Button from "../../components/button/Button";
 
 const Odds = () => {
 	const navigate = useNavigate()
@@ -28,7 +27,6 @@ const Odds = () => {
 	return (
 		<Page
 			title="Odds"
-			className="ctr space-y-2"
 		>
 			{error && ( <h1 style={{ color: "red" }}>{error}</h1>)}
 			{
