@@ -1,0 +1,19 @@
+.skyBetHorseInfoItem {
+	width: max-content;
+	min-width: 20rem;
+	margin-top: 1rem;
+	margin-left: 1rem;
+	background: rgba(0,0,0,0.3);
+	border: 0.075rem solid var(--puppeteerGreen);
+	border-radius: 0.2rem;
+	box-shadow: 0.1rem 0.2rem 0.3rem var(--darkGrey);
+}
+
+.skyBetHorseInfoItemH1 {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.skyBetHorseInfoItemH2 {
+	font-size: 1rem;
+}

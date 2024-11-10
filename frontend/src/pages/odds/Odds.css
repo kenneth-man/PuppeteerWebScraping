@@ -3,3 +3,8 @@
 	max-height: 20rem;
 	overflow-y: auto;
 }
+
+.button,
+.title {
+	margin: 1rem
+}

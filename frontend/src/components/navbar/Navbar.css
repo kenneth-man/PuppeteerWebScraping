@@ -3,7 +3,7 @@
 	align-items: center;
 	justify-content: space-between;
 	position: sticky;
-	min-height: 2rem;
+	min-height: 4rem;
 	padding: 0.5rem 0.75rem;
 	background: linear-gradient(0.25turn, var(--lightPink), #ebf8e1, var(--lightPurple));
 	border-bottom: 0.1rem solid white;

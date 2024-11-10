@@ -1,25 +1,28 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { skyBetNextRacesHorse } from "@kenneth/shared/constants/strings";
-import { Page, Button } from "../../components"
+import { ISkyBet, ISkyBetHorseInfo } from "@kenneth/shared/models/interfaces";
+import { Page, Button, GridList, SkyBetHorseInfoItem } from "../../components"
 import { postApi } from "../../utils"
 import { fourZeroThreeRoute } from "../../constants/strings";
 import "./Odds.css"
 
 const Odds = () => {
 	const navigate = useNavigate()
-	const [odds, setOdds]: [string, Dispatch<SetStateAction<string>>] = useState("")
+	const [odds, setOdds]: [ISkyBet, Dispatch<SetStateAction<ISkyBet>>] = useState(undefined)
 	const [loading, setLoading]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false)
 	const [error, setError]: [string, Dispatch<SetStateAction<string>>] = useState("")
 
 	const getOddsSkyBetNextRacesHorse = async () => {
 		try {
 			setLoading(true)
-			const res = await postApi("/odds", { eventUrl: skyBetNextRacesHorse })
-			setOdds(JSON.stringify(res))
+			const res: ISkyBet = await postApi("/odds", { eventUrl: skyBetNextRacesHorse })
+			console.log(res)
+			setOdds(res)
 		} catch(e) {
 			console.log(e)
 			navigate(fourZeroThreeRoute)
+			setError(e)
 		}
 		setLoading(false)
 	}
@@ -36,16 +39,31 @@ const Odds = () => {
 					<Button
 						onClick={getOddsSkyBetNextRacesHorse}
 						type="button"
+						className="button"
 					>
 						Get Odds for {skyBetNextRacesHorse}
 					</Button>
 				)
 			}
 			{
-				odds && (
+				odds &&
+				odds.title &&
+				odds.info?.length > 0 && (
 					<>
-						<h2>Data:</h2>
-						<p className="oddsData">{odds}</p>
+						<h2
+							className="title"
+						>
+							Title: {odds.title}
+						</h2>
+						<GridList>
+							{
+								odds.info.map((curr: ISkyBetHorseInfo) => (
+									<SkyBetHorseInfoItem
+										data={curr}
+									/>
+								))
+							}
+						</GridList>
 					</>
 				)
 			}
