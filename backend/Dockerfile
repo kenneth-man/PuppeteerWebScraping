@@ -13,10 +13,10 @@ RUN npm install
 WORKDIR /app/backend/config
 
 RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT \
-	--mount=type=secret,id=RDS_POSTGRES_NAME,env=RDS_POSTGRES_NAME \
-	--mount=type=secret,id=RDS_POSTGRES_MASTER_USERNAME,env=RDS_POSTGRES_MASTER_USERNAME \
-    --mount=type=secret,id=RDS_POSTGRES_MASTER_PASSWORD,env=RDS_POSTGRES_MASTER_PASSWORD \
-	--mount=type=secret,id=JWT_KEY,env=JWT_KEY \
+	--mount=type=secret,id=RDS_POSTGRES_NAME \
+	--mount=type=secret,id=RDS_POSTGRES_MASTER_USERNAME \
+    --mount=type=secret,id=RDS_POSTGRES_MASTER_PASSWORD \
+	--mount=type=secret,id=JWT_KEY \
 	echo '{ \
 		"VARS": { \
 			"postgres_host": "'$(cat /run/secrets/RDS_POSTGRES_ENDPOINT)'", \
