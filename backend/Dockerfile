@@ -4,7 +4,7 @@ RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT \
     --mount=type=secret,id=RDS_POSTGRES_MASTER_PASSWORD \
     --mount=type=secret,id=RDS_POSTGRES_MASTER_USERNAME \
     --mount=type=secret,id=RDS_POSTGRES_NAME \
-	--mount=type=secret,id=JWT_KEY \
+	--mount=type=secret,id=JWT_KEY
 
 WORKDIR /app
 
