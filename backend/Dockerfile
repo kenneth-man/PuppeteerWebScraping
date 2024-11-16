@@ -16,12 +16,6 @@ RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT,env= \
 		export temp=$(cat /run/secrets/JWT_KEY) && \
 		echo $temp > /savedSecrets/JWT_KEY
 
-ENV RDS_POSTGRES_ENDPOINT=$(cat /savedSecrets/RDS_POSTGRES_ENDPOINT)
-ENV RDS_POSTGRES_NAME=$(cat /savedSecrets/RDS_POSTGRES_NAME)
-ENV RDS_POSTGRES_MASTER_USERNAME=$(cat /savedSecrets/RDS_POSTGRES_MASTER_USERNAME)
-ENV RDS_POSTGRES_MASTER_PASSWORD=$(cat /savedSecrets/RDS_POSTGRES_MASTER_PASSWORD)
-ENV JWT_KEY=$(cat /savedSecrets/JWT_KEY)
-
 WORKDIR /app
 
 COPY . .
@@ -36,11 +30,11 @@ WORKDIR /app/backend/config
 
 RUN echo '{ \
 	"VARS": { \
-		"postgres_host": "'$RDS_POSTGRES_ENDPOINT'", \
-		"postgres_db_name": "'$RDS_POSTGRES_NAME'", \
-		"postgres_user": "'$RDS_POSTGRES_MASTER_USERNAME'", \
-		"postgres_password": "'$RDS_POSTGRES_MASTER_PASSWORD'", \
-		"jwt_key": "'$JWT_KEY'" \
+		"postgres_host": "'$(cat /savedSecrets/RDS_POSTGRES_ENDPOINT)'", \
+		"postgres_db_name": "'$(cat /savedSecrets/RDS_POSTGRES_NAME)'", \
+		"postgres_user": "'$(cat /savedSecrets/RDS_POSTGRES_MASTER_USERNAME)'", \
+		"postgres_password": "'$(cat /savedSecrets/RDS_POSTGRES_MASTER_PASSWORD)'", \
+		"jwt_key": "'$(cat /savedSecrets/JWT_KEY)'" \
 	} \
 }' > production.json
 
