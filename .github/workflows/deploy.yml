@@ -80,9 +80,9 @@ jobs:
           context: .
           secrets: |
             "RDS_POSTGRES_ENDPOINT=${{secrets.RDS_POSTGRES_ENDPOINT}}"
-            "RDS_POSTGRES_MASTER_PASSWORD=${{secrets.RDS_POSTGRES_MASTER_PASSWORD}}"
-            "RDS_POSTGRES_MASTER_USERNAME=${{secrets.RDS_POSTGRES_MASTER_USERNAME}}"
             "RDS_POSTGRES_NAME=${{secrets.RDS_POSTGRES_NAME}}"
+            "RDS_POSTGRES_MASTER_USERNAME=${{secrets.RDS_POSTGRES_MASTER_USERNAME}}"
+            "RDS_POSTGRES_MASTER_PASSWORD=${{secrets.RDS_POSTGRES_MASTER_PASSWORD}}"
             "JWT_KEY=${{secrets.JWT_KEY}}"
 
   update-backend-service-on-ecs:
