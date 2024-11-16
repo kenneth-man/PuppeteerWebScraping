@@ -1,6 +1,6 @@
 FROM node:22.7.0
 
-RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT,env= \
+RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT \
 		export temp=$(cat /run/secrets/RDS_POSTGRES_ENDPOINT) && \
 		echo $temp > /savedSecrets/RDS_POSTGRES_ENDPOINT \
 	--mount=type=secret,id=RDS_POSTGRES_NAME \
