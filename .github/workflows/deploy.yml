@@ -78,7 +78,7 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: $ECR_REGISTRY/$ECR_REPOSITORY_BACKEND:latest
+          tags: $ECR_REPOSITORY_BACKEND:latest
           file: backend/Dockerfile
           context: .
           secrets: |
