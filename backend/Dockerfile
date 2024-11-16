@@ -1,21 +1,26 @@
 FROM node:22.7.0
 
 RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT,env= \
-		cat /run/secrets/RDS_POSTGRES_ENDPOINT > /saved/RDS_POSTGRES_ENDPOINT \
+		export temp=$(cat /run/secrets/RDS_POSTGRES_ENDPOINT) && \
+		echo $temp > /savedSecrets/RDS_POSTGRES_ENDPOINT \
 	--mount=type=secret,id=RDS_POSTGRES_NAME \
-		cat /run/secrets/RDS_POSTGRES_NAME > /saved/RDS_POSTGRES_NAME \
+		export temp=$(cat /run/secrets/RDS_POSTGRES_NAME) && \
+		echo $temp > /savedSecrets/RDS_POSTGRES_NAME \
 	--mount=type=secret,id=RDS_POSTGRES_MASTER_USERNAME \
-		cat /run/secrets/RDS_POSTGRES_MASTER_USERNAME > /saved/RDS_POSTGRES_MASTER_USERNAME \
+		export temp=$(cat /run/secrets/RDS_POSTGRES_MASTER_USERNAME) && \
+		echo $temp > /savedSecrets/RDS_POSTGRES_MASTER_USERNAME \
     --mount=type=secret,id=RDS_POSTGRES_MASTER_PASSWORD \
-		cat /run/secrets/RDS_POSTGRES_MASTER_PASSWORD > /saved/RDS_POSTGRES_MASTER_PASSWORD \
+		export temp=$(cat /run/secrets/RDS_POSTGRES_MASTER_PASSWORD) && \
+		echo $temp > /savedSecrets/RDS_POSTGRES_MASTER_PASSWORD \
 	--mount=type=secret,id=JWT_KEY \
-		cat /run/secrets/JWT_KEY > /saved/JWT_KEY
+		export temp=$(cat /run/secrets/JWT_KEY) && \
+		echo $temp > /savedSecrets/JWT_KEY
 
-ENV RDS_POSTGRES_ENDPOINT=$(cat /saved/RDS_POSTGRES_ENDPOINT)
-ENV RDS_POSTGRES_MASTER_PASSWORD=$(cat /saved/RDS_POSTGRES_MASTER_PASSWORD)
-ENV RDS_POSTGRES_MASTER_USERNAME=$(cat /saved/RDS_POSTGRES_MASTER_USERNAME)
-ENV RDS_POSTGRES_NAME=$(cat /saved/RDS_POSTGRES_NAME)
-ENV JWT_KEY=$(cat /saved/JWT_KEY)
+ENV RDS_POSTGRES_ENDPOINT=$(cat /savedSecrets/RDS_POSTGRES_ENDPOINT)
+ENV RDS_POSTGRES_NAME=$(cat /savedSecrets/RDS_POSTGRES_NAME)
+ENV RDS_POSTGRES_MASTER_USERNAME=$(cat /savedSecrets/RDS_POSTGRES_MASTER_USERNAME)
+ENV RDS_POSTGRES_MASTER_PASSWORD=$(cat /savedSecrets/RDS_POSTGRES_MASTER_PASSWORD)
+ENV JWT_KEY=$(cat /savedSecrets/JWT_KEY)
 
 WORKDIR /app
 
