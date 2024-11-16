@@ -19,11 +19,11 @@ RUN --mount=type=secret,id=RDS_POSTGRES_ENDPOINT \
 	--mount=type=secret,id=JWT_KEY,env=JWT_KEY \
 	echo '{ \
 		"VARS": { \
-			"postgres_host": "'$(cat /app/savedSecrets/RDS_POSTGRES_ENDPOINT)'", \
-			"postgres_db_name": "'$(cat /app/savedSecrets/RDS_POSTGRES_NAME)'", \
-			"postgres_user": "'$(cat /app/savedSecrets/RDS_POSTGRES_MASTER_USERNAME)'", \
-			"postgres_password": "'$(cat /app/savedSecrets/RDS_POSTGRES_MASTER_PASSWORD)'", \
-			"jwt_key": "'$(cat /app/savedSecrets/JWT_KEY)'" \
+			"postgres_host": "'$(cat /run/secrets/RDS_POSTGRES_ENDPOINT)'", \
+			"postgres_db_name": "'$(cat /run/secrets/RDS_POSTGRES_NAME)'", \
+			"postgres_user": "'$(cat /run/secrets/RDS_POSTGRES_MASTER_USERNAME)'", \
+			"postgres_password": "'$(cat /run/secrets/RDS_POSTGRES_MASTER_PASSWORD)'", \
+			"jwt_key": "'$(cat /run/secrets/JWT_KEY)'" \
 		} \
 	}' > production.json
 
