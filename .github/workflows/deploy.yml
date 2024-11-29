@@ -5,47 +5,47 @@ on:
     branches: ["prod"]
 
 jobs:
-  # deploy-frontend-image-to-ecr:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out code
-  #       uses: actions/checkout@v4
+  deploy-frontend-image-to-ecr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
 
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v2
-  #       with:
-  #         aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-  #         aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-  #         aws-region: eu-west-2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: eu-west-2
 
-  #     - name: Login to Amazon ECR
-  #       id: login-ecr
-  #       uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-  #     - name: Build, tag, and push image to Amazon ECR
-  #       env:
-  #         ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
-  #         ECR_REPOSITORY_FRONTEND: ${{secrets.ECR_REPOSITORY_FRONTEND}}
-  #       run: |
-  #         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest -f frontend/Dockerfile .
-  #         docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{steps.login-ecr.outputs.registry}}
+          ECR_REPOSITORY_FRONTEND: ${{secrets.ECR_REPOSITORY_FRONTEND}}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest -f frontend/Dockerfile .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY_FRONTEND:latest
 
-  # update-frontend-service-on-ecs:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Configure AWS credentials
-  #       uses: aws-actions/configure-aws-credentials@v2
-  #       with:
-  #         aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
-  #         aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-  #         aws-region: eu-west-2
+  update-frontend-service-on-ecs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-region: eu-west-2
 
-  #     - name: Update ECS service with latest ECR image
-  #       env:
-  #         CLUSTER: ${{secrets.ECS_CLUSTER}}
-  #         SERVICE: ${{secrets.ECS_SERVICE_FRONTEND}}
-  #       run: aws ecs update-service --region eu-west-2 --cluster $CLUSTER --service $SERVICE --force-new-deployment
-  #   needs: [deploy-frontend-image-to-ecr]
+      - name: Update ECS service with latest ECR image
+        env:
+          CLUSTER: ${{secrets.ECS_CLUSTER}}
+          SERVICE: ${{secrets.ECS_SERVICE_FRONTEND}}
+        run: aws ecs update-service --region eu-west-2 --cluster $CLUSTER --service $SERVICE --force-new-deployment
+    needs: [deploy-frontend-image-to-ecr]
 
   deploy-backend-image-to-ecr:
     runs-on: ubuntu-latest
