@@ -1,9 +1,11 @@
 import {
 	frontendDevDomain,
-	frontendDevPreviewProdDomain
+	frontendDevPreviewProdDomain,
+	frontendProdDomain
 } from "@kenneth/shared/constants/strings";
 
 export const allowedOrigins: string[] = [
 	frontendDevDomain,
-	frontendDevPreviewProdDomain
+	frontendDevPreviewProdDomain,
+	frontendProdDomain
 ]
