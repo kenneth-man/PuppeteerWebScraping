@@ -8,7 +8,7 @@
 	"scripts": {
     	"start": "set NODE_ENV=development&& npx tsx ./server.ts",
 		"build": "npx tsc",
-		"preview": "set NODE_ENV=production&& npx tsx ./dist/server.js"
+		"preview": "NODE_ENV=production npx tsx ./dist/server.js"
 	},
 	"dependencies": {
 		"@kenneth/shared": "*"
