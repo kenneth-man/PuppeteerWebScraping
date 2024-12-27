@@ -1,6 +1,6 @@
 export const skyBetNextRacesHorse = "https://m.skybet.com/horse-racing"
 export const frontendDevDomain = "http://localhost:5173"
 export const frontendDevPreviewProdDomain = "http://localhost:4173"
-export const frontendProdDomain = "http://puppeteerwebscrapingfrontendalb-975098404.eu-west-2.elb.amazonaws.com"
+export const frontendProdDomain = "http://puppeteerwebscrapingfrontendalb-1974081769.eu-west-2.elb.amazonaws.com"
 export const backendDevDomain = "http://localhost:8000"
 export const backendProdDomain = "http://puppeteerwebscrapingbackendalb-723728832.eu-west-2.elb.amazonaws.com"
