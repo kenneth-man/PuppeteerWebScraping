@@ -1,4 +1,3 @@
 // TODO: update root readme around aws infrastructure
 // TODO: update frontend readme
 // TODO: Make frontend look nicer
-// TODO: Environments config for pg client in backend

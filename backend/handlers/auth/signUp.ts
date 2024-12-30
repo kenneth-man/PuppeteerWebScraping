@@ -3,7 +3,15 @@ import { z } from "zod"
 import { IRequestBody } from "../../models/interfaces"
 import { TPreAccountUser, TSignUp, TUser } from "../../models/types"
 import { client } from "../../server"
-import { addRow, getUserByEmail, hashPassword, signToken, throwError, tryCatch } from "../../utils"
+import {
+	addRow,
+	getUserByEmail,
+	hashPassword,
+	setCookieOptions,
+	signToken,
+	throwError,
+	tryCatch
+} from "../../utils"
 import { jwtTokenName } from "../../constants/strings"
 
 const signUp = async (
@@ -63,7 +71,11 @@ const signUp = async (
 
 			res
 				.status(200)
-				.cookie(jwtTokenName, token, { httpOnly: true })
+				.cookie(
+					jwtTokenName,
+					token,
+					setCookieOptions()
+				)
 				.json({...user});
 		},
 		res

@@ -3,6 +3,7 @@ import checkPassword from "./checkPassword";
 import getUserByEmail from "./getUserByEmail";
 import hashPassword from "./hashPassword";
 import protect from "./protect";
+import setCookieOptions from "./setCookieOptions";
 import signToken from "./signToken"
 import throwError from "./throwError";
 import tryCatch from "./tryCatch";
@@ -13,6 +14,7 @@ export {
 	getUserByEmail,
 	hashPassword,
 	protect,
+	setCookieOptions,
 	signToken,
 	throwError,
 	tryCatch

@@ -1,7 +1,14 @@
 import { Response } from "express"
 import { IRequestBody } from "../../models/interfaces"
 import { TSignIn, TUser } from "../../models/types"
-import { checkPassword, getUserByEmail, signToken, throwError, tryCatch } from "../../utils"
+import {
+	checkPassword,
+	getUserByEmail,
+	setCookieOptions,
+	signToken,
+	throwError,
+	tryCatch
+} from "../../utils"
 import { jwtTokenName } from "../../constants/strings"
 
 const signIn = async (
@@ -32,7 +39,11 @@ const signIn = async (
 
 			res
 				.status(200)
-				.cookie(jwtTokenName, token, { httpOnly: true })
+				.cookie(
+					jwtTokenName,
+					token,
+					setCookieOptions()
+				)
 				.json({...user});
 		},
 		res
