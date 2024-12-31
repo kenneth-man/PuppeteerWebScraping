@@ -1,5 +1,5 @@
 # Backend API
-- ### There are currently 3 endpoints
+- ### Some example endpoints...
 	- ### `/auth/signUp`
 		- ### Requires a request body with the following fields
 			- ### `username`
